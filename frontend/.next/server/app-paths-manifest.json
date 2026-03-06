@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about/page": "app/about/page.js",
+  "/career/page": "app/career/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/courses/[slug]/page": "app/courses/[slug]/page.js",
+  "/courses/page": "app/courses/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/portal/dashboard/page": "app/portal/dashboard/page.js",
+  "/portal/materials/page": "app/portal/materials/page.js",
+  "/portal/profile/page": "app/portal/profile/page.js",
+  "/portal/test-results/page": "app/portal/test-results/page.js"
+}

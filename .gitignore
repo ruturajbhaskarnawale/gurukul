@@ -1,0 +1,59 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+
+# env files (local secrets)
+.env
+*.env
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Database
+backend/dev.db
+backend/dev.db-journal
+*.db
+*.sqlite
+*.sqlite3
+
+# temporary output files
+*_log.txt
+*_version.txt
+nextjs_log.txt
+nextjs_log_utf8.txt
+node_version.txt
+npm_version.txt

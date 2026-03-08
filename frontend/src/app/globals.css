@@ -2,44 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #0f172a;
-    /* Slate 900 */
-    --primary: #2563eb;
-    /* Trust Blue */
-    --primary-light: #3b82f6;
-    --primary-dark: #1d4ed8;
-    --accent: #facc15;
-    /* Gold */
-    --accent-light: #fef08a;
-    --accent-dark: #eab308;
+    --foreground: #020617;
+    --card: #ffffff;
+    --card-foreground: #020617;
+    --popover: #ffffff;
+    --popover-foreground: #020617;
+    --primary: #020617;
+    --primary-foreground: #f8fafc;
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #f1f5f9;
+    --accent-foreground: #0f172a;
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #020617;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: #0f172a;
+    --background: #020617;
     --foreground: #f8fafc;
-    --primary: #3b82f6;
-    --primary-light: #60a5fa;
-    --primary-dark: #2563eb;
-    --accent: #fbbf24;
-    --accent-light: #fcd34d;
-    --accent-dark: #f59e0b;
+    --card: #020617;
+    --card-foreground: #f8fafc;
+    --popover: #020617;
+    --popover-foreground: #f8fafc;
+    --primary: #f8fafc;
+    --primary-foreground: #020617;
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --accent: #1e293b;
+    --accent-foreground: #f8fafc;
+    --destructive: #7f1d1d;
+    --destructive-foreground: #f8fafc;
+    --border: #1e293b;
+    --input: #1e293b;
+    --ring: #cbd5e1;
   }
 }
 
 @layer base {
   * {
-    @apply border-gray-200 dark:border-gray-800;
+    @apply border-border;
   }
 
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-300;
+    @apply bg-background text-foreground antialiased transition-colors duration-300 font-sans;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tighter-editorial font-bold uppercase;
+  }
+
+  p {
+    @apply leading-relaxed text-[#888888] lowercase;
+  }
+}
+
+@layer utilities {
+  .font-script {
+    font-family: var(--font-meddon), cursive;
+  }
+
+  .tracking-tighter-editorial {
+    letter-spacing: -0.05em;
+  }
+
+  .tracking-tight-editorial {
+    letter-spacing: -0.02em;
   }
 }

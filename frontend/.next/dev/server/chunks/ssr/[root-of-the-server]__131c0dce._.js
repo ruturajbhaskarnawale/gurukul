@@ -98,7 +98,7 @@ function AboutPage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["FadeIn"], {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                    className: "text-4xl lg:text-5xl font-extrabold tracking-tight mb-6",
+                                    className: "text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 text-slate-900 dark:text-white",
                                     children: [
                                         "Empowering Minds, ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
@@ -147,7 +147,7 @@ function AboutPage() {
                             className: "relative",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "aspect-square bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden relative",
+                                    className: "aspect-square bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-200 dark:border-slate-800",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "absolute inset-0 flex items-center justify-center text-slate-400 text-lg font-medium",
                                         children: "[Campus/Students Image]"
@@ -199,217 +199,178 @@ function AboutPage() {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 md:p-12 mb-32 border border-slate-100 dark:border-slate-800 relative overflow-hidden",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/about/page.tsx",
+                            lineNumber: 42,
+                            columnNumber: 12
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex flex-col md:flex-row gap-8 items-center relative z-10",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-48 h-48 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden border-4 border-white dark:border-slate-950 flex items-center justify-center text-slate-400",
+                                    children: "[Founder Photo]"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/about/page.tsx",
+                                    lineNumber: 44,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-10 h-10 text-primary/20 mb-4",
+                                            fill: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/about/page.tsx",
+                                                lineNumber: 49,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/about/page.tsx",
+                                            lineNumber: 48,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-xl text-slate-700 dark:text-slate-300 italic mb-6 leading-relaxed",
+                                            children: '"Education is not the learning of facts, but the training of the mind to think. At YP Gurukul, our sole mission is to ignite that spark of curiosity and guide our students through the rigorous journey of competitive exams with uncompromising quality and unwavering support."'
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/about/page.tsx",
+                                            lineNumber: 51,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    className: "font-bold text-lg text-slate-900 dark:text-white",
+                                                    children: "Mr. Yash Prakash"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/about/page.tsx",
+                                                    lineNumber: 55,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-primary font-medium",
+                                                    children: "Founder & Managing Director"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/about/page.tsx",
+                                                    lineNumber: 56,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/app/about/page.tsx",
+                                            lineNumber: 54,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/about/page.tsx",
+                                    lineNumber: 47,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/about/page.tsx",
+                            lineNumber: 43,
+                            columnNumber: 12
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/app/about/page.tsx",
+                    lineNumber: 41,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "text-center mb-16",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["FadeIn"], {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "text-3xl font-bold mb-4",
-                                children: "Our Core Pillars"
+                                className: "text-3xl font-bold mb-4 text-slate-900 dark:text-white",
+                                children: "Our Legacy in Numbers"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/about/page.tsx",
-                                lineNumber: 43,
+                                lineNumber: 65,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto",
-                                children: "The foundation of YP Gurukul rests on these integral principles that guide our teaching and interaction with every student."
+                                children: "A track record that speaks for itself. Consistent results year after year."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/about/page.tsx",
-                                lineNumber: 44,
+                                lineNumber: 66,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/about/page.tsx",
-                        lineNumber: 42,
+                        lineNumber: 64,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/about/page.tsx",
-                    lineNumber: 41,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StaggerContainer"], {
-                    className: "grid md:grid-cols-3 gap-8 mb-32",
+                    className: "grid grid-cols-2 md:grid-cols-4 gap-6 mb-32",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StaggerItem"], {
+                        {
+                            num: "500+",
+                            label: "JEE Advanced Selections"
+                        },
+                        {
+                            num: "850+",
+                            label: "NEET Top Doctors"
+                        },
+                        {
+                            num: "50+",
+                            label: "Cities Reached"
+                        },
+                        {
+                            num: "Top 10",
+                            label: "State Ranks Consistently"
+                        }
+                    ].map((stat, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StaggerItem"], {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl h-full border border-slate-100 dark:border-slate-800",
+                                className: "bg-white dark:bg-slate-950 p-6 text-center rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            className: "w-6 h-6 text-primary",
-                                            fill: "none",
-                                            viewBox: "0 0 24 24",
-                                            stroke: "currentColor",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                strokeLinecap: "round",
-                                                strokeLinejoin: "round",
-                                                strokeWidth: 2,
-                                                d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/about/page.tsx",
-                                                lineNumber: 55,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/about/page.tsx",
-                                            lineNumber: 54,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 53,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "text-xl font-bold mb-3",
-                                        children: "Expert Faculty"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 58,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-slate-600 dark:text-slate-400 leading-relaxed",
-                                        children: "Learn from the best minds in the industry. Our teachers are passionately dedicated to student success and simplifying complex concepts."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 59,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/about/page.tsx",
-                                lineNumber: 52,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/about/page.tsx",
-                            lineNumber: 51,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StaggerItem"], {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl h-full border border-slate-100 dark:border-slate-800",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-6",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            className: "w-6 h-6 text-accent-dark",
-                                            fill: "none",
-                                            viewBox: "0 0 24 24",
-                                            stroke: "currentColor",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                strokeLinecap: "round",
-                                                strokeLinejoin: "round",
-                                                strokeWidth: 2,
-                                                d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/about/page.tsx",
-                                                lineNumber: 69,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/about/page.tsx",
-                                            lineNumber: 68,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 67,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "text-xl font-bold mb-3",
-                                        children: "Structured Curriculum"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 72,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-slate-600 dark:text-slate-400 leading-relaxed",
-                                        children: "A meticulously planned timeline ensures comprehensive coverage of syllabus with ample time left for revision and mock tests."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 73,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/about/page.tsx",
-                                lineNumber: 66,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/about/page.tsx",
-                            lineNumber: 65,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["StaggerItem"], {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl h-full border border-slate-100 dark:border-slate-800",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-6",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            className: "w-6 h-6 text-green-600",
-                                            fill: "none",
-                                            viewBox: "0 0 24 24",
-                                            stroke: "currentColor",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                strokeLinecap: "round",
-                                                strokeLinejoin: "round",
-                                                strokeWidth: 2,
-                                                d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/about/page.tsx",
-                                                lineNumber: 83,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/about/page.tsx",
-                                            lineNumber: 82,
-                                            columnNumber: 17
-                                        }, this)
+                                        className: "text-3xl font-black text-accent mb-2",
+                                        children: stat.num
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/about/page.tsx",
                                         lineNumber: 81,
-                                        columnNumber: 15
+                                        columnNumber: 20
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "text-xl font-bold mb-3",
-                                        children: "Data-Driven Approach"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-sm font-semibold text-slate-600 dark:text-slate-400",
+                                        children: stat.label
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 86,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-slate-600 dark:text-slate-400 leading-relaxed",
-                                        children: "Through our digital portal, we track every test result to provide targeted feedback and identify areas of improvement effectively."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/about/page.tsx",
-                                        lineNumber: 87,
-                                        columnNumber: 15
+                                        lineNumber: 82,
+                                        columnNumber: 20
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/about/page.tsx",
                                 lineNumber: 80,
-                                columnNumber: 13
+                                columnNumber: 17
                             }, this)
-                        }, void 0, false, {
+                        }, i, false, {
                             fileName: "[project]/src/app/about/page.tsx",
                             lineNumber: 79,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                            columnNumber: 14
+                        }, this))
+                }, void 0, false, {
                     fileName: "[project]/src/app/about/page.tsx",
-                    lineNumber: 50,
+                    lineNumber: 72,
                     columnNumber: 9
                 }, this)
             ]

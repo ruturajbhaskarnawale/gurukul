@@ -1,101 +1,211 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '@/components/global/Card';
+import { useRouter } from 'next/navigation';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations/MotionUtils';
-import { apiClient } from '@/lib/apiClient';
+import { DashboardCard, DashboardChart } from '@/components/dashboard/OrbitComponents';
+import { apiClient, ApiError } from '@/lib/apiClient';
+import { useAuth } from '@/lib/authContext';
 
-interface DashboardStats {
-  students: number;
-  courses: number;
-  materials: number;
-  applications: number;
+interface AdminStats {
+  totalCourses: number;
+  totalMaterials: number;
+  totalApplications: number;
+  totalResults: number;
 }
 
 export default function AdminDashboardPage() {
-  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const router = useRouter();
+  const { user: authUser, isLoading: authLoading } = useAuth();
+  const [stats, setStats] = useState<AdminStats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchStats = async () => {
+    if (!authLoading && (!authUser || authUser.role !== 'ADMIN')) {
+      router.push('/login');
+    }
+  }, [authUser, authLoading, router]);
+
+  useEffect(() => {
+    if (!authUser || authUser.role !== 'ADMIN') return;
+    const fetchData = async () => {
       try {
-        const data = await apiClient.get<DashboardStats>('/admin/stats');
+        const data = await apiClient.get<AdminStats>('/admin/stats');
         setStats(data);
-      } catch (error) {
-        console.error('Failed to fetch admin stats:', error);
+      } catch (err) {
+         setError('Failed to load administrative metrics.');
       } finally {
         setLoading(false);
       }
     };
-    
-    fetchStats();
-  }, []);
+    fetchData();
+  }, [authUser, router]);
 
-  const statCards = [
-    { label: 'Total Students', value: stats?.students, icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z', color: 'text-blue-500', bg: 'bg-blue-500/10' },
-    { label: 'Active Courses', value: stats?.courses, icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253', color: 'text-purple-500', bg: 'bg-purple-500/10' },
-    { label: 'Study Materials', value: stats?.materials, icon: 'M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z', color: 'text-orange-500', bg: 'bg-orange-500/10' },
-    { label: 'Applications', value: stats?.applications, icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', color: 'text-green-500', bg: 'bg-green-500/10' },
+  // Mocking Application Rhythm
+  const chartData = [
+    { label: 'MON', value: 45 },
+    { label: 'TUE', value: 82 },
+    { label: 'WED', value: 68 },
+    { label: 'THU', value: 95 },
+    { label: 'FRI', value: 55 },
+    { label: 'SAT', value: 25 },
+    { label: 'SUN', value: 12 },
   ];
 
-  return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Admin Overview</h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
-          Monitor your platform's core metrics and manage content.
-        </p>
+  if (authLoading || (!stats && loading)) {
+    return (
+      <div className="space-y-12 animate-pulse">
+        <div className="h-12 w-64 bg-muted/40 rounded-xl" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {[1, 2, 3, 4].map(i => <div key={i} className="h-32 bg-muted/40 rounded-2xl" />)}
+        </div>
+        <div className="h-96 bg-muted/40 rounded-2xl" />
       </div>
+    );
+  }
 
-      <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {statCards.map((card, idx) => (
-          <StaggerItem key={idx}>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-lg ${card.bg}`}>
-                    <svg className={`w-6 h-6 ${card.color}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={card.icon} />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{card.label}</p>
-                    <p className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
-                      {loading ? (
-                        <span className="inline-block w-12 h-6 bg-slate-200 dark:bg-slate-700 animate-pulse rounded"></span>
-                      ) : (
-                        card.value || 0
-                      )}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
-
-      {/* Quick Actions / Getting Started */}
-      <FadeIn delay={0.3}>
-        <div className="mt-8 rounded-xl bg-gradient-to-r from-red-500/10 via-orange-500/5 to-transparent border border-red-500/20 p-8">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Welcome to your Gurukul Admin Panel</h3>
-          <p className="text-slate-600 dark:text-slate-300 max-w-2xl mb-6">
-            Everything you need to manage your institute's digital presence is accessible from the sidebar. 
-            Add new classroom courses, upload study materials for your students, record test results, and review career applications.
+  return (
+    <div className="space-y-12 pb-24">
+      
+      <FadeIn>
+        <div className="flex flex-col gap-2">
+          <h1 className="text-4xl md:text-5xl font-black text-foreground tracking-tighter uppercase leading-none">
+            Governance
+          </h1>
+          <p className="text-xs text-muted-foreground tracking-widest uppercase font-bold">
+            SYSTEM_STATUS: OPERATIONAL_LEVEL_01
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="/admin/courses" className="px-4 py-2 bg-white dark:bg-slate-800 text-sm font-semibold rounded-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-              Manage Courses
-            </a>
-            <a href="/admin/materials" className="px-4 py-2 bg-white dark:bg-slate-800 text-sm font-semibold rounded-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-              Upload Material
-            </a>
-            <a href="/admin/tests" className="px-4 py-2 bg-white dark:bg-slate-800 text-sm font-semibold rounded-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-              Enter Test Results
-            </a>
-          </div>
         </div>
       </FadeIn>
+
+      {/* KPI Stats */}
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerItem>
+          <DashboardCard
+            title="Active Requisitions"
+            value={stats?.totalApplications || 0}
+            subtitle="CANDIDATE_POOL_SIZE"
+            variant="orange"
+            trend={{ value: '8%', isUp: true }}
+            icon={
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            }
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <DashboardCard
+            title="Academic Modules"
+            value={stats?.totalCourses || 0}
+            subtitle="DEPLOYED_PROGRAMS"
+            variant="blue"
+            icon={
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            }
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <DashboardCard
+            title="Assessment Logs"
+            value={stats?.totalResults || 0}
+            subtitle="EVALUATION_SESSIONS"
+            variant="teal"
+            trend={{ value: '142', isUp: true }}
+            icon={
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            }
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <DashboardCard
+            title="Archival Assets"
+            value={stats?.totalMaterials || 0}
+            subtitle="TOTAL_RESOURCES"
+            variant="purple"
+            icon={
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+              </svg>
+            }
+          />
+        </StaggerItem>
+      </StaggerContainer>
+
+      <div className="grid lg:grid-cols-1 gap-8">
+        <FadeIn>
+          <DashboardChart 
+            title="Application Inflow"
+            subtitle="Visualizing candidate interest over the current archival cycle"
+            data={chartData}
+            color="#F97316"
+          />
+        </FadeIn>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-8">
+         <FadeIn>
+            <div className="rounded-2xl border border-border bg-muted p-8">
+               <div className="flex justify-between items-center mb-8">
+                  <h3 className="text-xl font-black text-foreground tracking-tight uppercase">Quick Actions</h3>
+                  <span className="text-[10px] font-bold text-orange-400/40 uppercase tracking-widest">Administrative_Access</span>
+               </div>
+               <div className="grid grid-cols-2 gap-4">
+                  <button className="p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group">
+                     <span className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2">01. DEPLOY</span>
+                     <p className="text-xs font-black text-foreground group-hover:text-orange-400 transition-colors">NEW_COURSE</p>
+                  </button>
+                  <button className="p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group">
+                     <span className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2">02. APPEND</span>
+                     <p className="text-xs font-black text-foreground group-hover:text-orange-400 transition-colors">STUDY_MATERIAL</p>
+                  </button>
+                  <button className="p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group">
+                     <span className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2">03. OVERSEE</span>
+                     <p className="text-xs font-black text-foreground group-hover:text-orange-400 transition-colors">ALL_APPLICATIONS</p>
+                  </button>
+                  <button className="p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group">
+                     <span className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2">04. ANALYZE</span>
+                     <p className="text-xs font-black text-foreground group-hover:text-orange-400 transition-colors">RESULT_MATRICS</p>
+                  </button>
+               </div>
+            </div>
+         </FadeIn>
+
+         <FadeIn>
+            <div className="rounded-2xl border border-border bg-gradient-to-br from-orange-500/10 to-transparent p-8 h-full">
+               <h3 className="text-xl font-black text-foreground tracking-tight uppercase mb-8">System Health</h3>
+               <div className="space-y-6">
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-muted/20 border border-border">
+                     <div className="flex items-center gap-4">
+                        <div className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(45,212,191,0.5)]" />
+                        <span className="text-[10px] font-bold text-foreground uppercase tracking-widest">Database_Sync</span>
+                     </div>
+                     <span className="text-[9px] font-bold text-teal-400 uppercase tracking-widest">ACTIVE</span>
+                  </div>
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-muted/20 border border-border">
+                     <div className="flex items-center gap-4">
+                        <div className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(45,212,191,0.5)]" />
+                        <span className="text-[10px] font-bold text-foreground uppercase tracking-widest">Auth_Protocol</span>
+                     </div>
+                     <span className="text-[9px] font-bold text-teal-400 uppercase tracking-widest">SECURE</span>
+                  </div>
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-muted/20 border border-border">
+                     <div className="flex items-center gap-4">
+                        <div className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_10px_rgba(249,115,22,0.5)]" />
+                        <span className="text-[10px] font-bold text-foreground uppercase tracking-widest">Resource_Load</span>
+                     </div>
+                     <span className="text-[9px] font-bold text-orange-400 uppercase tracking-widest">NOMINAL</span>
+                  </div>
+               </div>
+            </div>
+         </FadeIn>
+      </div>
+
     </div>
   );
 }

@@ -1,53 +1,84 @@
+"use client";
+
 import React from 'react';
-import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from '../animations/MotionUtils';
+import { motion } from 'framer-motion';
 import { Button } from '../global/Button';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const Hero3D = dynamic(() => import('./Hero3D').then((mod) => mod.Hero3D), {
+  ssr: false,
+});
 
 export const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-slate-900 pt-32 pb-20 lg:pt-48 lg:pb-32">
-      {/* Background Decor */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 blur-[120px] rounded-full w-[600px] h-[600px] bg-primary/20" />
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <StaggerContainer>
-          <StaggerItem>
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-accent uppercase bg-accent/10 rounded-full">
-              Unlock Your Potential
-            </span>
-          </StaggerItem>
-          
-          <StaggerItem>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-8">
-              Shape Your Future with <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent">
-                YP Gurukul
-              </span>
-            </h1>
-          </StaggerItem>
-          
-          <StaggerItem>
-            <p className="mt-4 text-xl text-slate-300 max-w-2xl mx-auto mb-10">
-              Premium classroom coaching and foundation courses designed to build strong fundamentals and ensure competitive success.
-            </p>
-          </StaggerItem>
-          
-          <StaggerItem>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/courses">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Explore Courses
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto text-white border-slate-700 hover:bg-slate-800">
-                  Book a Campus Visit
-                </Button>
-              </Link>
-            </div>
-          </StaggerItem>
-        </StaggerContainer>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
+      {/* 3D Background */}
+      <Hero3D />
+
+      {/* Radial Gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-radial from-transparent to-background/80 z-10 pointer-events-none" />
+
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center py-32">
+        
+        {/* Animated Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12"
+        >
+          <span className="font-script text-3xl text-foreground/40 lowercase">the</span>
+        </motion.div>
+        
+        {/* Kinetic Typography Heading */}
+        <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-extrabold text-foreground tracking-tighter-editorial mb-12 leading-[0.9] flex flex-col items-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden uppercase"
+          >
+            YP Gurukul
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden mt-4"
+          >
+            <span className="font-script text-5xl md:text-7xl text-foreground/50 tracking-normal lowercase">experience</span>
+          </motion.div>
+        </h1>
+        
+        {/* Description */}
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.8 }}
+          className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-16 lowercase font-medium tracking-tight"
+        >
+          premium coaching and foundational excellence reinvented for the modern scholar.
+        </motion.p>
+        
+        {/* Actions */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row justify-center gap-8 w-full"
+        >
+          <Link href="/courses">
+            <Button size="lg" className="w-full sm:w-auto h-16 px-12 rounded-none bg-foreground text-background hover:bg-foreground/90 transition-all text-sm tracking-[0.2em] font-bold uppercase border-none">
+              Explore Programs
+            </Button>
+          </Link>
+          <Link href="/contact">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto h-16 px-12 rounded-none text-foreground border-border hover:bg-accent transition-all text-sm tracking-[0.2em] font-bold uppercase">
+              Schedule Visit
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

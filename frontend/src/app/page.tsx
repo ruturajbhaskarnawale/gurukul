@@ -1,55 +1,55 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/home/HeroSection';
 import { QuickInquiry } from '@/components/home/QuickInquiry';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations/MotionUtils';
-import { Card, CardContent } from '@/components/global/Card';
+import Image from 'next/image';
 
-// New Components from Phase 3
+// Redesigned Components
 import { TestSeriesPreview } from '@/components/home/TestSeriesPreview';
 import { WhyChooseUs } from '@/components/home/WhyChooseUs';
 import { FacultyPreview } from '@/components/home/FacultyPreview';
 import { Testimonials } from '@/components/home/Testimonials';
 import { SuccessStories } from '@/components/home/SuccessStories';
 import { GalleryPreview } from '@/components/home/GalleryPreview';
+import { LearningJourney3DWrapper } from '@/components/home/LearningJourney3DWrapper';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <HeroSection />
+      
+      {/* 3D Interactive Scroll Sequence */}
+      <LearningJourney3DWrapper />
 
       {/* Stats Section */}
-      <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            
+      <section className="py-24 bg-background border-b border-border relative z-20">
+        <div className="max-w-[1800px] mx-auto px-12">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             <StaggerItem>
                <div className="flex flex-col items-center">
-                 <span className="text-4xl font-bold tracking-tighter text-primary mb-2">10k+</span>
-                 <span className="text-sm font-medium text-slate-500 uppercase">Students Taught</span>
+                 <span className="text-6xl md:text-8xl font-black tracking-tighter-editorial text-foreground mb-4">10K+</span>
+                 <span className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-[0.3em]">Students Taught</span>
                </div>
             </StaggerItem>
-
             <StaggerItem>
                <div className="flex flex-col items-center">
-                 <span className="text-4xl font-bold tracking-tighter text-primary mb-2">95%</span>
-                 <span className="text-sm font-medium text-slate-500 uppercase">Selection Rate</span>
+                 <span className="text-6xl md:text-8xl font-black tracking-tighter-editorial text-foreground mb-4">95%</span>
+                 <span className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-[0.3em]">Selection Rate</span>
                </div>
             </StaggerItem>
-
             <StaggerItem>
                <div className="flex flex-col items-center">
-                 <span className="text-4xl font-bold tracking-tighter text-primary mb-2">50+</span>
-                 <span className="text-sm font-medium text-slate-500 uppercase">Expert Faculty</span>
+                 <span className="text-6xl md:text-8xl font-black tracking-tighter-editorial text-foreground mb-4">50+</span>
+                 <span className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-[0.3em]">Expert Faculty</span>
                </div>
             </StaggerItem>
-
             <StaggerItem>
                <div className="flex flex-col items-center">
-                 <span className="text-4xl font-bold tracking-tighter text-primary mb-2">24/7</span>
-                 <span className="text-sm font-medium text-slate-500 uppercase">Portal Access</span>
+                 <span className="text-6xl md:text-8xl font-black tracking-tighter-editorial text-foreground mb-4">24/7</span>
+                 <span className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-[0.3em]">Resource Access</span>
                </div>
             </StaggerItem>
-
           </StaggerContainer>
         </div>
       </section>
@@ -57,88 +57,106 @@ export default function Home() {
       {/* 1. Test Series Preview */}
       <TestSeriesPreview />
 
-      {/* Popular Programs / Featured Courses (Original) */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Popular Programs / Featured Courses */}
+      <section className="py-32 bg-background border-b border-border">
+        <div className="max-w-[1800px] mx-auto px-12">
            <FadeIn>
-             <div className="text-center mb-16">
-               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-slate-900 dark:text-white">Popular Programs</h2>
-               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                 Discover our highly-rated classroom and online foundational courses tailored for competitive success.
-               </p>
+             <div className="flex flex-col items-center mb-32">
+               <span className="font-script text-4xl text-muted-foreground lowercase mb-6">the</span>
+               <h2 className="text-7xl md:text-[8rem] font-black uppercase tracking-tighter-editorial text-center leading-[0.85]">
+                 Popular <br /> <span className="text-foreground/20">Programs</span>
+               </h2>
              </div>
            </FadeIn>
 
            <StaggerContainer className="grid md:grid-cols-3 gap-8">
              <StaggerItem>
-               <Card className="h-full hover:-translate-y-1 transition-transform duration-300">
-                 <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded-t-xl overflow-hidden relative">
-                   <div className="absolute inset-0 flex items-center justify-center text-slate-400">[Course Image]</div>
+               <div className="group flex flex-col items-start cursor-pointer">
+                 <div className="h-[500px] bg-muted/20 w-full relative mb-12 border border-border overflow-hidden">
+                   <Image 
+                     src="/images/programs/foundation.png" 
+                     alt="Class 11 Science Batches" 
+                     fill 
+                     className="object-cover group-hover:scale-110 transition-transform duration-700 blur-sm group-hover:blur-none"
+                   />
+                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-700" />
+                   <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-0 transition-opacity duration-700 font-black uppercase tracking-widest text-xs">
+                     Course Image
+                   </div>
                  </div>
-                 <CardContent className="pt-6">
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider mb-2 block">Foundation</span>
-                    <h3 className="text-xl font-bold mb-3 text-slate-900 dark:text-white">Class 11 Science Batches</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">Comprehensive 2-year classroom program building strong foundation.</p>
-                    <div className="flex justify-between items-center text-sm font-medium text-slate-900 dark:text-slate-100">
-                      <span>2 Years</span>
-                    </div>
-                 </CardContent>
-               </Card>
+                 <span className="text-[10px] font-bold px-3 py-1 bg-primary text-primary-foreground uppercase tracking-[0.2em] mb-4">Foundation</span>
+                 <h3 className="text-3xl font-black text-foreground mb-2 uppercase tracking-tighter">Class 11 Science Batches</h3>
+                 <p className="text-sm font-medium text-muted-foreground lowercase tracking-wide max-w-sm mb-8">Comprehensive 2-year classroom program building strong foundation.</p>
+                 <div className="h-px w-12 bg-border group-hover:w-full transition-all duration-500" />
+               </div>
              </StaggerItem>
-
              <StaggerItem>
-               <Card className="h-full hover:-translate-y-1 transition-transform duration-300">
-                 <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded-t-xl overflow-hidden relative">
-                   <div className="absolute inset-0 flex items-center justify-center text-slate-400">[Course Image]</div>
+               <div className="group flex flex-col items-start cursor-pointer">
+                 <div className="h-[500px] bg-muted/20 w-full relative mb-12 border border-border overflow-hidden">
+                   <Image 
+                     src="/images/programs/target.png" 
+                     alt="Target Batch" 
+                     fill 
+                     className="object-cover group-hover:scale-110 transition-transform duration-700 blur-sm group-hover:blur-none"
+                   />
+                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-700" />
+                   <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-0 transition-opacity duration-700 font-black uppercase tracking-widest text-xs">
+                     Course Image
+                   </div>
                  </div>
-                 <CardContent className="pt-6">
-                    <span className="text-xs font-semibold text-accent-dark uppercase tracking-wider mb-2 block">Premium</span>
-                    <h3 className="text-xl font-bold mb-3 text-slate-900 dark:text-white">Target Batch</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">Intensive 1-year droppers batch focusing on problem-solving.</p>
-                    <div className="flex justify-between items-center text-sm font-medium text-slate-900 dark:text-slate-100">
-                      <span>1 Year</span>
-                    </div>
-                 </CardContent>
-               </Card>
+                 <span className="text-[10px] font-bold px-3 py-1 bg-primary text-primary-foreground uppercase tracking-[0.2em] mb-4">Premium</span>
+                 <h3 className="text-3xl font-black text-foreground mb-2 uppercase tracking-tighter">Target Batch</h3>
+                 <p className="text-sm font-medium text-muted-foreground lowercase tracking-wide max-w-sm mb-8">Intensive 1-year droppers batch focusing on problem-solving.</p>
+                 <div className="h-px w-12 bg-border group-hover:w-full transition-all duration-500" />
+               </div>
              </StaggerItem>
-
              <StaggerItem>
-               <Card className="h-full hover:-translate-y-1 transition-transform duration-300">
-                 <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded-t-xl overflow-hidden relative">
-                   <div className="absolute inset-0 flex items-center justify-center text-slate-400">[Course Image]</div>
+               <div className="group flex flex-col items-start cursor-pointer">
+                 <div className="h-[500px] bg-muted/20 w-full relative mb-12 border border-border overflow-hidden">
+                   <Image 
+                     src="/images/programs/test_series.png" 
+                     alt="Weekend Test Series" 
+                     fill 
+                     className="object-cover group-hover:scale-110 transition-transform duration-700 blur-sm group-hover:blur-none"
+                   />
+                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-700" />
+                   <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-0 transition-opacity duration-700 font-black uppercase tracking-widest text-xs">
+                     Course Image
+                   </div>
                  </div>
-                 <CardContent className="pt-6">
-                    <span className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-2 block">Online</span>
-                    <h3 className="text-xl font-bold mb-3 text-slate-900 dark:text-white">Weekend Test Series</h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">All-India test series with detailed performance analytics.</p>
-                    <div className="flex justify-between items-center text-sm font-medium text-slate-900 dark:text-slate-100">
-                      <span>6 Months</span>
-                    </div>
-                 </CardContent>
-               </Card>
+                 <span className="text-[10px] font-bold px-3 py-1 bg-primary text-primary-foreground uppercase tracking-[0.2em] mb-4">Specialized</span>
+                 <h3 className="text-3xl font-black text-foreground mb-2 uppercase tracking-tighter">Weekend Test Series</h3>
+                 <p className="text-sm font-medium text-muted-foreground lowercase tracking-wide max-w-sm mb-8">All-India test series with detailed performance analytics.</p>
+                 <div className="h-px w-12 bg-border group-hover:w-full transition-all duration-500" />
+               </div>
              </StaggerItem>
            </StaggerContainer>
         </div>
       </section>
 
-      {/* 2. Why Choose Us */}
+      {/* Why Choose Us */}
+      <div className="w-full h-px bg-border" />
       <WhyChooseUs />
 
-      {/* 3. Star Faculty */}
+      {/* Star Faculty */}
+      <div className="w-full h-px bg-border" />
       <FacultyPreview />
 
-      {/* 4. Success Stories (Wall of Fame) */}
+      {/* Success Stories (Wall of Fame) */}
+      <div className="w-full h-px bg-border" />
       <SuccessStories />
 
-      {/* 5. Student Testimonials */}
+      {/* Student Testimonials */}
+      <div className="w-full h-px bg-border" />
       <Testimonials />
 
-      {/* 6. Gallery Preview */}
+      {/* Gallery Preview */}
+      <div className="w-full h-px bg-border" />
       <GalleryPreview />
 
-      {/* 7. Quick Inquiry (Original) */}
+      {/* Quick Inquiry */}
+      <div className="w-full h-px bg-border" />
       <QuickInquiry />
     </div>
   );
 }
-

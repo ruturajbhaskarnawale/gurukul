@@ -83,8 +83,8 @@ export default function AdminCoursesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Manage Courses</h1>
-          <p className="text-sm text-slate-500">Create, view, and delete classroom programs.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Manage Courses</h1>
+          <p className="text-sm text-muted-foreground">Create, view, and delete classroom programs.</p>
         </div>
         <Button onClick={() => setIsAdding(!isAdding)}>
           {isAdding ? 'Cancel' : '+ Add New Course'}
@@ -93,10 +93,10 @@ export default function AdminCoursesPage() {
 
       {isAdding && (
         <SlideUp>
-          <Card className="border-l-4 border-slate-900 border-t-0 border-r-0 border-b-0 shadow-lg mb-8">
+          <Card className="border-l-4 border-primary border-t-0 border-r-0 border-b-0 shadow-lg mb-8">
             <CardContent className="p-6">
               <h2 className="text-lg font-semibold mb-4">Add Course Details</h2>
-              {errorMsg && <div className="text-sm text-red-600 bg-red-50 p-3 rounded mb-4 border border-red-200">{errorMsg}</div>}
+              {errorMsg && <div className="text-sm text-destructive bg-destructive/10 p-3 rounded mb-4 border border-destructive/20">{errorMsg}</div>}
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -107,7 +107,7 @@ export default function AdminCoursesPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="w-full">
                     <label className="block text-sm font-medium text-foreground mb-1.5">Category</label>
-                    <select name="category" value={formData.category} onChange={handleChange} className="flex h-11 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:border-gray-700">
+                    <select name="category" value={formData.category} onChange={handleChange} className="flex h-11 w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                       <option value="Foundation">Foundation (Class 8-10)</option>
                       <option value="Target">Target (Class 11-12 Board)</option>
                       <option value="Entrance">Entrance (JEE / NEET)</option>
@@ -128,7 +128,7 @@ export default function AdminCoursesPage() {
 
                 <div className="w-full">
                   <label className="block text-sm font-medium text-foreground mb-1.5">Course Description</label>
-                  <textarea name="description" value={formData.description} onChange={handleChange} required rows={3} className="flex w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:border-gray-700"></textarea>
+                  <textarea name="description" value={formData.description} onChange={handleChange} required rows={3} className="flex w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
                 </div>
 
                 <div className="pt-2 flex justify-end gap-3">
@@ -146,21 +146,21 @@ export default function AdminCoursesPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Course Title</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Category</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Duration</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300 text-right">Actions</th>
+                <tr className="border-b border-border bg-muted/40">
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Course Title</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Category</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Duration</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan={4} className="py-8 text-center text-slate-500">Loading courses...</td>
+                    <td colSpan={4} className="py-8 text-center text-muted-foreground">Loading courses...</td>
                   </tr>
                 ) : courses.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="py-8 text-center text-slate-500">No courses found. Click add new.</td>
+                    <td colSpan={4} className="py-8 text-center text-muted-foreground">No courses found. Click add new.</td>
                   </tr>
                 ) : (
                   courses.map((course) => (
@@ -182,7 +182,7 @@ export default function AdminCoursesPage() {
                         >
                           View
                         </button>
-                        <span className="text-slate-300 dark:text-slate-700">|</span>
+                        <span className="text-border">|</span>
                         <button 
                           onClick={() => handleDelete(course.id, course.title)}
                           className="text-red-600 hover:text-red-700 hover:underline text-sm font-medium"

@@ -38,63 +38,91 @@ export const QuickInquiry = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="py-32 bg-background border-b border-border">
+      <div className="max-w-[1800px] mx-auto px-12">
+        <div className="grid lg:grid-cols-2 gap-32 items-center">
 
           <FadeIn>
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-4">
-                Not sure which course is right for you?
+            <div className="flex flex-col items-start leading-tight">
+              <span className="font-script text-4xl text-muted-foreground lowercase mb-8">embark</span>
+              <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter-editorial mb-12">
+                The <br /> <span className="text-foreground/20">Journey</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-                Request a callback from our expert academic counselors. We'll help you chart the perfect roadmap for your educational journey.
+              <p className="text-xl text-muted-foreground lowercase mb-12 max-w-md leading-relaxed">
+                request a consultation with our academic architects to design your path to excellence.
               </p>
-              <div className="flex gap-4 items-center">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Call us directly</p>
-                  <p className="font-semibold">+91 123 456 7890</p>
-                </div>
+              <div className="flex gap-8 items-center pt-8 border-t border-border w-full">
+                <div className="text-[12px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30">Support Line</div>
+                <p className="text-2xl font-black uppercase tracking-tighter text-foreground">+91 123 456 7890</p>
               </div>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <Card className="shadow-lg border-primary/10">
-              <CardHeader>
-                <CardTitle className="text-2xl">Request Callback</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {successMsg ? (
-                  <div className="text-center py-8">
-                    <div className="text-4xl mb-4">🎉</div>
-                    <p className="text-green-700 dark:text-green-400 font-semibold">{successMsg}</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <Input label="First Name" placeholder="John" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-                      <Input label="Last Name" placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <div className="border border-border p-12 md:p-16">
+              {successMsg ? (
+                <div className="text-center py-16">
+                  <h3 className="text-4xl font-black uppercase tracking-tighter text-white mb-4">Confirmed</h3>
+                  <p className="text-[#888888] lowercase">{successMsg}</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-12">
+                  <div className="grid md:grid-cols-2 gap-12">
+                    <div className="flex flex-col gap-4">
+                      <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">First Name</label>
+                      <input 
+                        className="bg-transparent border-b border-border py-4 focus:border-primary focus:outline-none transition-colors text-xl font-bold uppercase tracking-tight text-foreground"
+                        placeholder="NAME"
+                        value={firstName} 
+                        onChange={(e) => setFirstName(e.target.value)} required 
+                      />
                     </div>
-                    <Input label="Phone Number" type="tel" placeholder="+91 98765 43210" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-                    <Input label="Interested Class/Course" placeholder="e.g. 11th Science" value={course} onChange={(e) => setCourse(e.target.value)} />
+                    <div className="flex flex-col gap-4">
+                      <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Last Name</label>
+                      <input 
+                        className="bg-transparent border-b border-border py-4 focus:border-primary focus:outline-none transition-colors text-xl font-bold uppercase tracking-tight text-foreground"
+                        placeholder="SURNAME"
+                        value={lastName} 
+                        onChange={(e) => setLastName(e.target.value)} 
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col gap-4">
+                    <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Phone Number</label>
+                    <input 
+                      type="tel"
+                      className="bg-transparent border-b border-border py-4 focus:border-primary focus:outline-none transition-colors text-xl font-bold uppercase tracking-tight text-foreground"
+                      placeholder="+91 000 000 0000"
+                      value={phone} 
+                      onChange={(e) => setPhone(e.target.value)} required 
+                    />
+                  </div>
 
-                    {errorMsg && (
-                      <p className="text-red-600 dark:text-red-400 text-sm">{errorMsg}</p>
-                    )}
+                  <div className="flex flex-col gap-4">
+                    <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Selected Course</label>
+                    <input 
+                      className="bg-transparent border-b border-border py-4 focus:border-primary focus:outline-none transition-colors text-xl font-bold uppercase tracking-tight text-foreground"
+                      placeholder="e.g. 11TH SCIENCE"
+                      value={course} 
+                      onChange={(e) => setCourse(e.target.value)} 
+                    />
+                  </div>
 
-                    <Button className="w-full mt-2" size="lg" type="submit" isLoading={submitting}>
-                      Submit Inquiry
-                    </Button>
-                  </form>
-                )}
-              </CardContent>
-            </Card>
+                  {errorMsg && (
+                    <p className="text-destructive text-xs font-bold uppercase tracking-widest">{errorMsg}</p>
+                  )}
+
+                  <button 
+                    className="w-full py-6 border border-border font-bold uppercase tracking-[0.4em] text-[12px] hover:bg-foreground hover:text-background transition-all disabled:opacity-50 text-foreground"
+                    type="submit" 
+                    disabled={submitting}
+                  >
+                    {submitting ? 'SENDING...' : 'INITIATE CONSULTATION'}
+                  </button>
+                </form>
+              )}
+            </div>
           </FadeIn>
 
         </div>

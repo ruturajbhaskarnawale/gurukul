@@ -88,8 +88,8 @@ export default function AdminMaterialsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Study Materials</h1>
-          <p className="text-sm text-slate-500">Upload notes, sheets, and resources for students.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Study Materials</h1>
+          <p className="text-sm text-muted-foreground">Upload notes, sheets, and resources for students.</p>
         </div>
         <Button onClick={() => setIsAdding(!isAdding)}>
           {isAdding ? 'Cancel' : '+ Upload Material'}
@@ -98,10 +98,10 @@ export default function AdminMaterialsPage() {
 
       {isAdding && (
         <SlideUp>
-          <Card className="border-l-4 border-orange-500 border-t-0 border-r-0 border-b-0 shadow-lg mb-8">
+          <Card className="border-l-4 border-primary border-t-0 border-r-0 border-b-0 shadow-lg mb-8">
             <CardContent className="p-6">
               <h2 className="text-lg font-semibold mb-4">Upload New Material</h2>
-              {errorMsg && <div className="text-sm text-red-600 bg-red-50 p-3 rounded mb-4 border border-red-200">{errorMsg}</div>}
+              {errorMsg && <div className="text-sm text-destructive bg-destructive/10 p-3 rounded mb-4 border border-destructive/20">{errorMsg}</div>}
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -121,7 +121,7 @@ export default function AdminMaterialsPage() {
                       value={formData.courseId} 
                       onChange={handleChange} 
                       required
-                      className="flex h-11 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:border-gray-700"
+                      className="flex h-11 w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
                       {courses.length === 0 && <option disabled value="">No courses available. Create one first.</option>}
                       {courses.map(c => (
@@ -136,9 +136,9 @@ export default function AdminMaterialsPage() {
                   <input 
                     type="file" 
                     accept=".pdf"
-                    className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-white hover:file:bg-orange-600 cursor-pointer border border-gray-300 dark:border-gray-700 rounded-md p-1.5" 
+                    className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 cursor-pointer border border-border rounded-md p-1.5" 
                   />
-                  <p className="text-xs text-slate-400 mt-2">
+                  <p className="text-xs text-muted-foreground/60 mt-2">
                     Note: File upload logic is simulated for this demo.
                   </p>
                 </div>
@@ -158,39 +158,39 @@ export default function AdminMaterialsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Material Title</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Course</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Date Added</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300 text-right">Actions</th>
+                <tr className="border-b border-border bg-muted/40">
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Material Title</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Course</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Date Added</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan={4} className="py-8 text-center text-slate-500">Loading materials...</td>
+                    <td colSpan={4} className="py-8 text-center text-muted-foreground">Loading materials...</td>
                   </tr>
                 ) : materials.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="py-8 text-center text-slate-500">
+                    <td colSpan={4} className="py-8 text-center text-muted-foreground">
                       No materials found. {courses.length === 0 ? 'Add a course first to upload materials.' : 'Click upload to add some.'}
                     </td>
                   </tr>
                 ) : (
                   materials.map((mat) => (
-                    <tr key={mat.id} className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/20 transition-colors">
+                    <tr key={mat.id} className="border-b border-border hover:bg-muted/40 transition-colors">
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-3">
                           <svg className="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                           </svg>
-                          <span className="font-medium text-slate-900 dark:text-white">{mat.title}</span>
+                          <span className="font-medium text-foreground">{mat.title}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-6 text-sm text-slate-600 dark:text-slate-400">
+                      <td className="py-4 px-6 text-sm text-muted-foreground">
                         {mat.course?.title || 'Unknown Course'}
                       </td>
-                      <td className="py-4 px-6 text-sm text-slate-500">
+                      <td className="py-4 px-6 text-sm text-muted-foreground/60">
                         {new Date(mat.createdAt).toLocaleDateString()}
                       </td>
                       <td className="py-4 px-6 text-right">

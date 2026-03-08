@@ -90,8 +90,8 @@ export default function AdminTestsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Test Results</h1>
-          <p className="text-sm text-slate-500">Record and monitor student performance.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Test Results</h1>
+          <p className="text-sm text-muted-foreground">Record and monitor student performance.</p>
         </div>
         <Button onClick={() => setIsAdding(!isAdding)}>
           {isAdding ? 'Cancel' : '+ Add Test Result'}
@@ -100,10 +100,10 @@ export default function AdminTestsPage() {
 
       {isAdding && (
         <SlideUp>
-          <Card className="border-l-4 border-blue-500 border-t-0 border-r-0 border-b-0 shadow-lg mb-8">
+          <Card className="border-l-4 border-primary border-t-0 border-r-0 border-b-0 shadow-lg mb-8">
             <CardContent className="p-6">
               <h2 className="text-lg font-semibold mb-4">Enter Test Marks</h2>
-              {errorMsg && <div className="text-sm text-red-600 bg-red-50 p-3 rounded mb-4 border border-red-200">{errorMsg}</div>}
+              {errorMsg && <div className="text-sm text-destructive bg-destructive/10 p-3 rounded mb-4 border border-destructive/20">{errorMsg}</div>}
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -114,7 +114,7 @@ export default function AdminTestsPage() {
                       value={formData.userId} 
                       onChange={handleChange} 
                       required
-                      className="flex h-11 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:border-gray-700"
+                      className="flex h-11 w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
                       {students.length === 0 && <option disabled value="">No students available.</option>}
                       {students.map(s => (
@@ -146,22 +146,22 @@ export default function AdminTestsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Student</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Test Name</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Score</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Date</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300 text-right">Performance</th>
+                <tr className="border-b border-border bg-muted/40">
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Student</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Test Name</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Score</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Date</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground text-right">Performance</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan={5} className="py-8 text-center text-slate-500">Loading tests...</td>
+                    <td colSpan={5} className="py-8 text-center text-muted-foreground">Loading tests...</td>
                   </tr>
                 ) : results.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="py-8 text-center text-slate-500">
+                    <td colSpan={5} className="py-8 text-center text-muted-foreground">
                       No test results found. {students.length === 0 ? 'Wait for students to register.' : 'Click add test result.'}
                     </td>
                   </tr>
@@ -169,18 +169,18 @@ export default function AdminTestsPage() {
                   results.map((res) => {
                     const percentage = (res.marksObtained / res.totalMarks) * 100;
                     return (
-                      <tr key={res.id} className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/20 transition-colors">
+                      <tr key={res.id} className="border-b border-border hover:bg-muted/40 transition-colors">
                         <td className="py-4 px-6">
-                          <p className="font-medium text-slate-900 dark:text-white">{res.user.name}</p>
-                          <p className="text-xs text-slate-500">{res.user.email}</p>
+                          <p className="font-medium text-foreground">{res.user.name}</p>
+                          <p className="text-xs text-muted-foreground">{res.user.email}</p>
                         </td>
-                        <td className="py-4 px-6 text-sm text-slate-600 dark:text-slate-400">
+                        <td className="py-4 px-6 text-sm text-muted-foreground">
                           {res.testName}
                         </td>
                         <td className="py-4 px-6 font-medium">
-                          {res.marksObtained} <span className="text-slate-400 text-sm font-normal">/ {res.totalMarks}</span>
+                          {res.marksObtained} <span className="text-muted-foreground/40 text-sm font-normal">/ {res.totalMarks}</span>
                         </td>
-                        <td className="py-4 px-6 text-sm text-slate-500">
+                        <td className="py-4 px-6 text-sm text-muted-foreground/60">
                           {new Date(res.testDate).toLocaleDateString()}
                         </td>
                         <td className="py-4 px-6 text-right">

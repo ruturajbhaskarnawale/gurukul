@@ -2,152 +2,72 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { FadeIn, StaggerContainer, StaggerItem } from '../animations/MotionUtils';
+import { Magnetic } from '../animations/Magnetic';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 export const Footer = () => {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
+  const isDashboard = pathname?.startsWith('/portal') || pathname?.startsWith('/admin');
+  if (isDashboard) return null;
+
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-20 pb-10 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-background text-foreground py-32 border-t border-border">
+      <div className="max-w-[1800px] mx-auto px-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-24">
           
-          {/* Brand & About */}
-          <StaggerItem>
-            <Link href="/" className="inline-block mb-6">
-              <span className="text-3xl font-bold text-primary">YP Gurukul</span>
-            </Link>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Premium coaching institute dedicated to transforming students into top achievers through expert guidance, innovative teaching, and comprehensive study materials.
+          {/* Brand */}
+          <div className="col-span-1 md:col-span-2">
+            <h2 className="text-5xl font-black uppercase tracking-tighter-editorial mb-12">YP Gurukul</h2>
+            <p className="max-w-md text-2xl lowercase text-muted-foreground leading-relaxed font-medium">
+              premium foundational coaching and academic excellence for the modern scholar.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all">
-                <FaFacebook size={18} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all">
-                <FaTwitter size={18} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all">
-                <FaInstagram size={18} />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all">
-                <FaYoutube size={18} />
-              </a>
-            </div>
-          </StaggerItem>
+          </div>
 
           {/* Quick Links */}
-          <StaggerItem>
-            <h3 className="text-white font-bold text-lg mb-6 relative inline-block">
-              Quick Links
-              <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/about" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Our Courses
-                </Link>
-              </li>
-              <li>
-                <Link href="/career" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Career / Hiring
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/login" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Student Portal Login
-                </Link>
-              </li>
+          <div>
+            <h3 className="text-[12px] font-bold uppercase tracking-[0.3em] mb-12 text-muted-foreground/30">Navigation</h3>
+            <ul className="space-y-6">
+              {['Home', 'Courses', 'About', 'Career', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link href={`/${item === 'Home' ? '' : item.toLowerCase()}`} className="text-xl font-bold hover:text-muted-foreground transition-colors lowercase">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </StaggerItem>
+          </div>
 
-          {/* Popular Courses */}
-          <StaggerItem>
-            <h3 className="text-white font-bold text-lg mb-6 relative inline-block">
-              Popular Programs
-              <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
-            </h3>
-            <ul className="space-y-3">
+          {/* Contact */}
+          <div>
+            <h3 className="text-[12px] font-bold uppercase tracking-[0.3em] mb-12 text-muted-foreground/30">Connect</h3>
+            <ul className="space-y-6">
               <li>
-                <Link href="/courses/class-11-science" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Class 11th Science
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/class-12-science" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Class 12th Science
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/target-droppers" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Droppers Batch
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/crash-course" className="text-slate-400 hover:text-primary transition-colors text-sm flex items-center">
-                  <span className="mr-2">&rsaquo;</span> Crash Course Series
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses" className="text-primary hover:text-white transition-colors text-sm font-medium mt-2 block">
-                  View All &rarr;
-                </Link>
-              </li>
-            </ul>
-          </StaggerItem>
-
-          {/* Contact Info */}
-          <StaggerItem>
-            <h3 className="text-white font-bold text-lg mb-6 relative inline-block">
-              Contact Us
-              <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <FaMapMarkerAlt className="text-primary mt-1 flex-shrink-0" size={16} />
-                <span className="ml-3 text-slate-400 text-sm leading-relaxed">
-                  123 Education Lane, Knowledge City, IN 400001
-                </span>
-              </li>
-              <li className="flex items-center">
-                <FaPhoneAlt className="text-primary flex-shrink-0" size={16} />
-                <a href="tel:+911234567890" className="ml-3 text-slate-400 hover:text-white transition-colors text-sm">
-                  +91 123 456 7890
-                </a>
-              </li>
-              <li className="flex items-center">
-                <FaEnvelope className="text-primary flex-shrink-0" size={16} />
-                <a href="mailto:contact@ypgurukul.com" className="ml-3 text-slate-400 hover:text-white transition-colors text-sm">
+                <a href="mailto:contact@ypgurukul.com" className="text-xl font-bold hover:text-muted-foreground transition-colors lowercase italic">
                   contact@ypgurukul.com
                 </a>
               </li>
+              <li className="text-xl font-bold lowercase">
+                +91 123 456 7890
+              </li>
+              <li className="text-muted-foreground lowercase text-base max-w-[240px] mt-8 leading-relaxed">
+                academic street, knowledge park, city
+              </li>
             </ul>
-          </StaggerItem>
-        </StaggerContainer>
-
-        {/* Copyright Bar */}
-        <FadeIn delay={0.4}>
-          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center px-4">
-            <p className="text-slate-500 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} YP Gurukul. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm">
-              <Link href="#" className="text-slate-500 hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="text-slate-500 hover:text-white transition-colors">Terms of Service</Link>
-            </div>
           </div>
-        </FadeIn>
+
+        </div>
+
+        <div className="mt-32 pt-16 border-t border-border flex flex-col md:flex-row justify-between items-center text-[11px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40">
+          <p>© {currentYear} YP Gurukul Institute. all rights reserved.</p>
+          <div className="flex gap-12 mt-6 md:mt-0">
+            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

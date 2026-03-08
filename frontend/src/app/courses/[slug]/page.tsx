@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { FadeIn, SlideUp } from '@/components/animations/MotionUtils';
-import { Card, CardContent } from '@/components/global/Card';
-import { Button } from '@/components/global/Button';
+import React, { useEffect, useState, use } from 'react';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations/MotionUtils';
 import { apiClient } from '@/lib/apiClient';
 import Link from 'next/link';
 
@@ -19,7 +17,8 @@ interface CourseDetail {
   batchTimings: string | null; // JSON string
 }
 
-export default function CourseDetailPage({ params }: { params: { slug: string } }) {
+export default function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [course, setCourse] = useState<CourseDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -27,51 +26,38 @@ export default function CourseDetailPage({ params }: { params: { slug: string } 
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        // Fetch all and find by slug, or backend should support GET /courses/:slug
         const courses = await apiClient.get<CourseDetail[]>('/public/courses');
-        const found = courses.find((c) => c.slug === params.slug);
+        const found = courses.find((c) => c.slug === slug);
         
         if (found) {
           setCourse(found);
         } else {
-          setError('Course not found.');
+          setError('ARCHIVAL RECORD NOT FOUND');
         }
       } catch {
-        setError('Failed to load course details. The server might be offline.');
-        // Fallback mock data
+        setError('OFFLINE MODE — SHOWING ARCHIVAL DATA');
         setCourse({
           id: 'mock',
-          title: params.slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-          slug: params.slug,
+          title: slug.split('-').map(w => w.toUpperCase()).join(' '),
+          slug: slug,
           category: 'Premium',
-          description: 'This highly structured program is designed to deliver consistent, measurable progress. We combine rigorous testing, daily practice papers (DPPs), and one-on-one doubt clearing sessions to ensure no student is left behind.',
+          description: 'This highly structured program is designed to deliver consistent, measurable progress. We combine rigorous testing, daily practice papers (DPPs), and one-on-one doubt clearing sessions to ensure no student is left behind. Our curriculum is engineered for maximum conceptual retention and application.',
           duration: '1 Year',
-          feeStructure: '₹85,000 p.a.',
-          subjects: JSON.stringify(["Physics Mechanics & Electromagnetism", "Organic & Physical Chemistry Mastery", "Advanced Calculus & Algebra"]),
-          batchTimings: JSON.stringify({ "Morning": "8:00 AM - 12:00 PM", "Evening": "4:00 PM - 8:00 PM" })
+          feeStructure: '₹85,000 P.A.',
+          subjects: JSON.stringify(["Physics Mechanics & Electromagnetism", "Organic & Physical Chemistry Mastery", "Advanced Calculus & Algebra", "Strategic Biology & Genetics"]),
+          batchTimings: JSON.stringify({ "Morning": "8:00 AM - 12:00 PM", "Evening": "4:00 PM - 8:00 PM", "Weekend": "9:00 AM - 3:00 PM" })
         });
       } finally {
         setLoading(false);
       }
     };
     fetchCourse();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) {
     return (
-      <div className="bg-slate-50 dark:bg-slate-950 min-h-screen py-32 text-center text-slate-500">
-        Loading syllabus and course details...
-      </div>
-    );
-  }
-
-  if (error && !course) {
-    return (
-      <div className="bg-slate-50 dark:bg-slate-950 min-h-screen py-32 text-center text-amber-500">
-        <p className="mb-4">⚠️ {error}</p>
-        <Link href="/courses">
-           <Button variant="outline">Back to All Courses</Button>
-        </Link>
+      <div className="bg-background min-h-screen flex items-center justify-center">
+        <span className="font-script text-4xl text-muted-foreground animate-pulse">retrieving syllabus...</span>
       </div>
     );
   }
@@ -84,127 +70,131 @@ export default function CourseDetailPage({ params }: { params: { slug: string } 
   try { if (course?.batchTimings) timingsObj = JSON.parse(course.batchTimings); } catch (e) {}
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen py-20 mt-16">
+    <div className="bg-background min-h-screen pb-32">
       
-      {/* Course Hero Header */}
-      <div className="bg-slate-900 text-white py-20 -mt-20 pt-36 relative overflow-hidden">
-         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 blur-[100px] rounded-full w-[400px] h-[400px] bg-primary/20 pointer-events-none" />
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
-           <FadeIn>
-             <Link href="/courses" className="text-primary hover:text-white transition-colors text-sm font-semibold mb-6 inline-block">
-                &larr; Back to Programs
-             </Link>
-             <br/>
-             <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-accent uppercase bg-accent/20 rounded-full">
-               {course?.category} Program
-             </span>
-             <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
-               {course?.title}
-             </h1>
-             <p className="text-lg md:text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
-               {course?.description?.slice(0, 150)}...
-             </p>
-             <div className="flex flex-wrap gap-6 items-center text-sm font-medium justify-center md:justify-start">
-               <span className="flex items-center text-slate-300"><strong className="text-white mr-2">Duration:</strong> {course?.duration}</span>
-               {course?.feeStructure && (
-                 <span className="flex items-center text-slate-300"><strong className="text-white mr-2">Fee:</strong> {course.feeStructure}</span>
-               )}
-             </div>
-           </FadeIn>
-         </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-3 gap-12">
-          
-          {/* Main Content Area */}
-          <div className="lg:col-span-2 space-y-12">
-            
-            <SlideUp>
-              <h2 className="text-2xl font-bold mb-4">Course Overview</h2>
-              <div className="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400">
-                <p>{course?.description}</p>
+      {/* Course Header — Editorial Style */}
+      <section className="pt-48 pb-32 border-b border-border relative overflow-hidden">
+        <div className="max-w-[1800px] mx-auto px-12">
+          <FadeIn>
+            <div className="flex flex-col items-start leading-[0.85]">
+              <Link href="/courses" className="text-[10px] font-bold uppercase tracking-[0.5em] text-muted-foreground hover:text-foreground transition-colors mb-12 block">
+                [ back to programs ]
+              </Link>
+              <span className="font-script text-4xl text-muted-foreground lowercase mb-8 block">the program</span>
+              <h1 className="text-6xl md:text-[9rem] font-black uppercase tracking-tighter-editorial text-foreground mb-12">
+                {course?.title.split(' ').map((word, i) => (
+                  <React.Fragment key={i}>
+                    {i === 2 ? <br /> : null}
+                    {word}{' '}
+                  </React.Fragment>
+                ))}
+              </h1>
+              <div className="grid md:grid-cols-3 gap-12 w-full pt-12 border-t border-border mt-12">
+                 <div className="flex flex-col">
+                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground opacity-30 mb-2">Category</span>
+                   <span className="text-xl font-black text-foreground">{course?.category}</span>
+                 </div>
+                 <div className="flex flex-col">
+                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground opacity-30 mb-2">Duration</span>
+                   <span className="text-xl font-black text-foreground">{course?.duration}</span>
+                 </div>
+                 <div className="flex flex-col">
+                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground opacity-30 mb-2">Investment</span>
+                   <span className="text-xl font-black text-foreground">{course?.feeStructure || 'N/A'}</span>
+                 </div>
               </div>
-            </SlideUp>
-
-            {subjectsList.length > 0 && (
-              <SlideUp delay={0.1}>
-                <h2 className="text-2xl font-bold mb-4">Core Subjects Covered</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                   {subjectsList.map((item, i) => (
-                     <div key={i} className="flex items-start bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 rounded-xl shadow-sm">
-                       <svg className="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                       </svg>
-                       <span className="text-slate-700 dark:text-slate-300 font-medium">{item}</span>
-                     </div>
-                   ))}
-                </div>
-              </SlideUp>
-            )}
-
-            {Object.keys(timingsObj).length > 0 && (
-              <SlideUp delay={0.2}>
-                <h2 className="text-2xl font-bold mb-4">Available Batch Timings</h2>
-                <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
-                   <table className="w-full text-left">
-                     <thead className="bg-slate-50 dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700">
-                        <tr>
-                          <th className="px-6 py-4 font-bold text-slate-900 dark:text-white">Batch Type</th>
-                          <th className="px-6 py-4 font-bold text-slate-900 dark:text-white">Schedule</th>
-                        </tr>
-                     </thead>
-                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                        {Object.entries(timingsObj).map(([batchName, time], i) => (
-                          <tr key={i} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                            <td className="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">{batchName}</td>
-                            <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{time as string}</td>
-                          </tr>
-                        ))}
-                     </tbody>
-                   </table>
-                </div>
-              </SlideUp>
-            )}
-
-          </div>
-
-          {/* Sidebar CTA */}
-          <div className="lg:col-span-1">
-            <SlideUp delay={0.3} className="sticky top-24">
-              <Card className="border-primary/20 shadow-xl overflow-hidden">
-                <div className="bg-primary/5 p-6 text-center border-b border-primary/10">
-                   <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Admissions Open</p>
-                   <p className="text-3xl font-extrabold text-slate-900 dark:text-white">Enroll Today</p>
-                </div>
-                
-                <CardContent className="p-6">
-                  <div className="space-y-4 mb-8">
-                     <div className="flex justify-between text-sm py-2 border-b border-slate-100 dark:border-slate-800">
-                       <span className="text-slate-500">Next Batch Starts</span>
-                       <span className="font-semibold dark:text-white">Upcoming Monday</span>
-                     </div>
-                     <div className="flex justify-between text-sm py-2 border-b border-slate-100 dark:border-slate-800">
-                       <span className="text-slate-500">Available Seats</span>
-                       <span className="font-semibold text-accent-dark">Limited</span>
-                     </div>
-                  </div>
-
-                  <Link href="/contact" className="block w-full mb-3">
-                    <Button size="lg" className="w-full">Enquire Now</Button>
-                  </Link>
-                  <Button variant="outline" className="w-full text-slate-600">Download Syllabus PDF</Button>
-                  
-                  <p className="text-xs text-center text-slate-400 mt-6">
-                    Join thousands of successful students who trusted YP Gurukul for their career goals.
-                  </p>
-                </CardContent>
-              </Card>
-            </SlideUp>
-          </div>
-
+            </div>
+          </FadeIn>
         </div>
-      </div>
+
+        {/* Backdrop visual element */}
+        <div className="absolute -bottom-24 -right-24 text-[25rem] font-black text-foreground opacity-[0.02] pointer-events-none select-none uppercase tracking-tighter">
+          {slug.split('-')[0]}
+        </div>
+      </section>
+
+      {/* Main Content — Bento Style */}
+      <section className="py-32">
+        <div className="max-w-[1800px] mx-auto px-12">
+          <div className="grid lg:grid-cols-12 gap-12">
+            
+            {/* Overview & Subjects */}
+            <div className="lg:col-span-8 space-y-32">
+              <FadeIn>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground opacity-30 mb-12 block">Overview</span>
+                  <p className="text-3xl md:text-4xl font-medium text-foreground opacity-80 leading-snug lowercase">
+                    {course?.description}
+                  </p>
+                </div>
+              </FadeIn>
+
+              {subjectsList.length > 0 && (
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 mb-12 block">Curriculum Focus</span>
+                  <StaggerContainer className="grid md:grid-cols-2 gap-4">
+                    {subjectsList.map((item, i) => (
+                      <StaggerItem key={i}>
+                        <div className="p-8 border border-border bg-muted group hover:bg-muted/60 transition-colors duration-500">
+                           <div className="flex justify-between items-center">
+                              <span className="text-xl font-black text-foreground uppercase tracking-tighter">{item}</span>
+                              <span className="text-[10px] font-bold text-muted-foreground opacity-10 uppercase">Focus_0{i+1}</span>
+                           </div>
+                           <div className="h-px w-0 bg-primary group-hover:w-full transition-all duration-700 ease-in-out mt-8" />
+                        </div>
+                      </StaggerItem>
+                    ))}
+                  </StaggerContainer>
+                </div>
+              )}
+            </div>
+
+            {/* Sidebar — Schedule & CTA */}
+            <div className="lg:col-span-4 lg:pl-12">
+              <div className="sticky top-48 space-y-12">
+                <FadeIn>
+                   <div className="p-12 border border-border bg-muted relative overflow-hidden group">
+                      <div className="absolute inset-0 bg-foreground opacity-0 group-hover:opacity-[0.02] transition-opacity duration-700" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground opacity-30 mb-8 block">Schedule</span>
+                      
+                      <div className="divide-y divide-border">
+                        {Object.entries(timingsObj).map(([batch, time], i) => (
+                          <div key={i} className="py-6 flex justify-between items-center group/item hover:pl-2 transition-all duration-500">
+                             <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground group-hover/item:text-foreground transition-colors">{batch}</span>
+                             <span className="text-xs font-bold text-foreground text-right">{time as string}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="pt-12 mt-12 border-t border-border">
+                        <Link href="/contact" className="block w-full">
+                          <button className="w-full py-6 border border-border text-[10px] font-bold uppercase tracking-[0.5em] text-foreground hover:bg-foreground hover:text-background transition-all duration-500">
+                            Enquire Now
+                          </button>
+                        </Link>
+                        <button className="w-full py-6 text-[10px] font-bold uppercase tracking-[0.5em] text-muted-foreground hover:text-foreground transition-all mt-4">
+                           Download Prospectus
+                        </button>
+                      </div>
+
+                      <div className="absolute bottom-4 right-8 opacity-5 text-4xl font-black">YP_G</div>
+                   </div>
+                </FadeIn>
+
+                <FadeIn delay={0.2}>
+                   <div className="p-12 border border-border">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.3em] leading-relaxed">
+                        limited enrollment capacity ensures personalized academic engineering for every candidate.
+                      </p>
+                   </div>
+                </FadeIn>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

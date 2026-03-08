@@ -1,6 +1,19 @@
 {
-  "app": {},
-  "appUsingSizeAdjust": false,
+  "app": {
+    "[project]/src/app/courses/[slug]/page": [
+      "static/media/a343f882a40d2cc9-s.p.71e1367e.woff2",
+      "static/media/0481e98ac7015430-s.p.bd78a057.woff2"
+    ],
+    "[project]/src/app/courses/page": [
+      "static/media/a343f882a40d2cc9-s.p.71e1367e.woff2",
+      "static/media/0481e98ac7015430-s.p.bd78a057.woff2"
+    ],
+    "[project]/src/app/page": [
+      "static/media/a343f882a40d2cc9-s.p.71e1367e.woff2",
+      "static/media/0481e98ac7015430-s.p.bd78a057.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
   "pages": {},
   "pagesUsingSizeAdjust": false
 }

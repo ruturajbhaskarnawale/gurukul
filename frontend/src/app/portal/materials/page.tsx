@@ -17,7 +17,7 @@ interface StudyMaterial {
 }
 
 const Skeleton = ({ className = '' }: { className?: string }) => (
-  <div className={`animate-pulse bg-slate-200 dark:bg-slate-700 rounded ${className}`} />
+  <div className={`animate-pulse bg-muted/40 rounded ${className}`} />
 );
 
 export default function MaterialsPage() {
@@ -80,10 +80,10 @@ export default function MaterialsPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto w-full">
       <FadeIn>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground mb-2">
           Study Materials
         </h1>
-        <p className="text-slate-600 dark:text-slate-400">
+        <p className="text-muted-foreground">
           Access and download resources uploaded by your faculty.
         </p>
       </FadeIn>
@@ -97,8 +97,8 @@ export default function MaterialsPage() {
               onClick={() => setActiveSubject(sub)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 activeSubject === sub
-                  ? 'bg-primary text-white'
-                  : 'bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 dark:bg-slate-900 dark:border-slate-800 dark:hover:bg-slate-800 dark:text-slate-300'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted border border-border hover:bg-muted/40 text-muted-foreground'
               }`}
             >
               {sub}
@@ -109,13 +109,13 @@ export default function MaterialsPage() {
 
       {filtered.length === 0 ? (
         <FadeIn>
-          <p className="text-slate-500 text-sm">No materials available for this course yet.</p>
+          <p className="text-muted-foreground/60 text-sm">No materials available for this course yet.</p>
         </FadeIn>
       ) : (
         <StaggerContainer className="grid lg:grid-cols-2 gap-4">
           {filtered.map((mat) => (
             <StaggerItem key={mat.id}>
-              <Card className="hover:border-primary/50 transition-colors">
+              <Card className="hover:border-foreground/30 transition-colors">
                 <CardContent className="p-5 flex justify-between items-center sm:flex-row flex-col gap-4 text-center sm:text-left">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 text-red-500 rounded-lg flex justify-center items-center flex-shrink-0">
@@ -124,8 +124,8 @@ export default function MaterialsPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-900 dark:text-white line-clamp-1">{mat.title}</h3>
-                      <div className="text-sm text-slate-500 mt-1 flex flex-wrap gap-x-3">
+                      <h3 className="font-semibold text-foreground line-clamp-1">{mat.title}</h3>
+                      <div className="text-sm text-muted-foreground/60 mt-1 flex flex-wrap gap-x-3">
                         <span className="text-primary font-medium">{mat.course.title}</span>
                         <span>Uploaded: {new Date(mat.uploadedAt).toLocaleDateString('en-IN')}</span>
                       </div>
@@ -146,7 +146,7 @@ export default function MaterialsPage() {
         </StaggerContainer>
       )}
 
-      <FadeIn delay={0.4} className="mt-8 text-center text-sm text-slate-500">
+      <FadeIn delay={0.4} className="mt-8 text-center text-sm text-muted-foreground/60">
         Showing {filtered.length} of {materials.length} resources for your enrolled courses.
       </FadeIn>
     </div>

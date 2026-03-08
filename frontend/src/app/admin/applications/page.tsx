@@ -36,8 +36,8 @@ export default function AdminApplicationsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Career Applications</h1>
-        <p className="text-sm text-slate-500">Review job applications submitted via the public career page.</p>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">Career Applications</h1>
+        <p className="text-sm text-muted-foreground">Review job applications submitted via the public career page.</p>
       </div>
 
       <FadeIn>
@@ -45,46 +45,46 @@ export default function AdminApplicationsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Applicant</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Contact</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Position Applied</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300">Date</th>
-                  <th className="py-4 px-6 font-semibold text-sm text-slate-600 dark:text-slate-300 text-right">Resume</th>
+                <tr className="border-b border-border bg-muted/40">
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Applicant</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Contact</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Position Applied</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground">Date</th>
+                  <th className="py-4 px-6 font-semibold text-sm text-muted-foreground text-right">Resume</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan={5} className="py-8 text-center text-slate-500">Loading applications...</td>
+                    <td colSpan={5} className="py-8 text-center text-muted-foreground">Loading applications...</td>
                   </tr>
                 ) : applications.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="py-8 text-center text-slate-500">
+                    <td colSpan={5} className="py-8 text-center text-muted-foreground">
                       No applications found. Once submitted via the careers form, they will appear here.
                     </td>
                   </tr>
                 ) : (
-                  applications.map((app) => (
-                    <tr key={app.id} className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/20 transition-colors">
+                   applications.map((app) => (
+                    <tr key={app.id} className="border-b border-border hover:bg-muted/40 transition-colors">
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-3">
-                           <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 font-bold text-xs">
+                           <div className="w-8 h-8 rounded-full bg-muted/60 flex items-center justify-center text-foreground font-bold text-xs">
                              {app.name.charAt(0).toUpperCase()}
                            </div>
-                           <span className="font-medium text-slate-900 dark:text-white">{app.name}</span>
+                           <span className="font-medium text-foreground">{app.name}</span>
                         </div>
                       </td>
                       <td className="py-4 px-6">
-                        <p className="text-sm text-slate-600 dark:text-slate-400">{app.email}</p>
-                        <p className="text-xs text-slate-500">{app.mobile}</p>
+                        <p className="text-sm text-muted-foreground">{app.email}</p>
+                        <p className="text-xs text-muted-foreground/60">{app.mobile}</p>
                       </td>
                       <td className="py-4 px-6">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
                           {app.position}
                         </span>
                       </td>
-                      <td className="py-4 px-6 text-sm text-slate-500">
+                      <td className="py-4 px-6 text-sm text-muted-foreground/60">
                         {new Date(app.appliedAt).toLocaleDateString()}
                       </td>
                       <td className="py-4 px-6 text-right">

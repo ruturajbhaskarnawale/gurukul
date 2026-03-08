@@ -27,29 +27,27 @@ export const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-      {/* Background pattern decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform origin-top hidden lg:block"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <FadeIn>
-            <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-2 block">The Gurukul Advantage</span>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Why Choose YP Gurukul?
-            </h2>
-          </FadeIn>
+    <section className="py-32 bg-background border-b border-border">
+      <div className="max-w-[1800px] mx-auto px-12">
+        
+        <div className="flex flex-col items-start mb-32">
+          <span className="font-script text-4xl text-muted-foreground lowercase mb-6">the</span>
+          <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter-editorial leading-[0.85]">
+            YP Gurukul <br /> <span className="text-foreground/20">Advantage</span>
+          </h2>
         </div>
 
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-24">
           {features.map((feature, idx) => (
             <StaggerItem key={idx}>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-2xl bg-white/10 text-primary flex items-center justify-center mb-6 shadow-inner transform hover:scale-110 hover:-rotate-3 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+              <div className="flex flex-col items-start">
+                <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-muted-foreground/30 mb-8 font-manrope">
+                  0{idx + 1}
+                </span>
+                <h3 className="text-3xl font-black mb-6 uppercase tracking-tighter text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="text-base text-muted-foreground lowercase leading-relaxed font-medium">
                   {feature.desc}
                 </p>
               </div>

@@ -45,6 +45,51 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../src/app/admin/applications/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/applications">> = Specific
+  const handler = {} as typeof import("../../src/app/admin/applications/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/admin/courses/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/courses">> = Specific
+  const handler = {} as typeof import("../../src/app/admin/courses/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/admin/materials/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/materials">> = Specific
+  const handler = {} as typeof import("../../src/app/admin/materials/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/admin/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin">> = Specific
+  const handler = {} as typeof import("../../src/app/admin/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/admin/tests/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/tests">> = Specific
+  const handler = {} as typeof import("../../src/app/admin/tests/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/career/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/career">> = Specific
@@ -140,6 +185,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 
 
 
+
+// Validate ../../src/app/admin/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/admin">> = Specific
+  const handler = {} as typeof import("../../src/app/admin/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
 
 // Validate ../../src/app/layout.tsx
 {

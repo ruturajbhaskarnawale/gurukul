@@ -1,20 +1,23 @@
 "use client";
 
 import React, { useState } from 'react';
-import { FadeIn, SlideUp } from '@/components/animations/MotionUtils';
-import { Card, CardContent } from '@/components/global/Card';
-import { Input } from '@/components/global/Input';
-import { Button } from '@/components/global/Button';
+import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from '@/components/animations/MotionUtils';
 import { apiClient, ApiError } from '@/lib/apiClient';
 
 export default function ContactPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    message: '',
+  });
   const [submitting, setSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,99 +25,188 @@ export default function ContactPage() {
     setErrorMsg('');
     setSubmitting(true);
     try {
-      await apiClient.post('/public/inquiries', { name, email, mobile, message });
-      setSuccessMsg('Your message has been sent! Our team will reach out to you shortly.');
-      setName(''); setEmail(''); setMobile(''); setMessage('');
+      await apiClient.post('/public/inquiries', formData);
+      setSuccessMsg('INQUIRY LOGGED. OUR ARCHIVES WILL REVIEW YOUR REQUEST.');
+      setFormData({ name: '', email: '', mobile: '', message: '' });
     } catch (err) {
       if (err instanceof ApiError) {
         setErrorMsg(err.message);
       } else {
-        setErrorMsg('Failed to send message. Please try again or call us directly.');
+        setErrorMsg('TRANSMISSION FAILURE. TRY AGAIN.');
       }
     } finally {
       setSubmitting(false);
     }
   };
 
+  const locations = [
+    {
+      id: "HUB_01",
+      name: "MAIN CAMPUS",
+      address: "123 EDUCATION LANE, KNOWLEDGE CITY, IN 400001",
+      type: "HEADQUARTERS"
+    },
+    {
+      id: "HUB_02",
+      name: "WEST WING",
+      address: "456 SCHOLAR SQUARE, BANDRA KURLA COMPLEX, IN 400051",
+      type: "LEARNING CENTER"
+    }
+  ];
+
   return (
-    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen py-20 mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <FadeIn>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl mb-4">
-              Get in Touch
-            </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Have questions about our courses or admission process? Our team is here to help you.
-            </p>
+    <div className="bg-background min-h-screen pb-32">
+      
+      {/* Terminal Header */}
+      <section className="pt-48 pb-32 border-b border-border">
+        <div className="max-w-[1800px] mx-auto px-12">
+          <div className="flex flex-col items-start leading-[0.85]">
+            <FadeIn>
+              <span className="font-script text-4xl text-muted-foreground lowercase mb-8 block">the</span>
+              <h1 className="text-7xl md:text-[10rem] font-black uppercase tracking-tighter-editorial text-foreground">
+                Inquiry <br /> <span className="text-foreground/20">Terminal</span>
+              </h1>
+              <p className="text-xl text-muted-foreground lowercase mt-12 max-w-xl leading-relaxed">
+                open a direct channel with the YP Gurukul mission. we prioritize precision in institutional communication.
+              </p>
+            </FadeIn>
           </div>
-        </FadeIn>
+        </div>
+      </section>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-
-          <SlideUp className="lg:col-span-1 space-y-8">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
+      <section className="py-32">
+        <div className="max-w-[1800px] mx-auto px-12">
+          <div className="grid lg:grid-cols-12 gap-24">
+            
+            {/* The Terminal Form */}
+            <div className="lg:col-span-8">
+              <FadeIn>
+                 <div className="mb-24">
+                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/30 mb-8 block">Transmission Form</span>
+                   {successMsg && (
+                     <div className="p-8 border border-border bg-muted/20 text-xs font-bold uppercase tracking-[0.5em] text-foreground animate-pulse mb-8">
+                       {successMsg}
+                     </div>
+                   )}
+                   {errorMsg && (
+                     <div className="p-8 border border-border bg-muted/20 text-xs font-bold uppercase tracking-[0.5em] text-red-500 mb-8">
+                       {errorMsg}
+                     </div>
+                   )}
+                 </div>
+ 
+                 <form onSubmit={handleSubmit} className="space-y-16">
+                    <div className="grid md:grid-cols-2 gap-16">
+                       <div className="flex flex-col group">
+                          <label className="text-[9px] font-bold uppercase tracking-[0.4em] text-foreground/30 group-focus-within:text-foreground transition-colors mb-4 italic">01. Identity_Name</label>
+                          <input 
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="bg-transparent border-b border-border py-4 text-foreground font-black uppercase tracking-tighter focus:outline-none focus:border-foreground transition-all text-2xl"
+                            placeholder="..."
+                          />
+                       </div>
+                       <div className="flex flex-col group">
+                          <label className="text-[9px] font-bold uppercase tracking-[0.4em] text-foreground/30 group-focus-within:text-foreground transition-colors mb-4 italic">02. Electronic_Channel</label>
+                          <input 
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="bg-transparent border-b border-border py-4 text-foreground font-black uppercase tracking-tighter focus:outline-none focus:border-foreground transition-all text-2xl"
+                            placeholder="COMM@MAIL.TER"
+                          />
+                       </div>
+                    </div>
+ 
+                    <div className="flex flex-col group">
+                       <label className="text-[9px] font-bold uppercase tracking-[0.4em] text-foreground/30 group-focus-within:text-foreground transition-colors mb-4 italic">03. Neural_Mobile</label>
+                       <input 
+                         type="tel"
+                         name="mobile"
+                         value={formData.mobile}
+                         onChange={handleChange}
+                         className="bg-transparent border-b border-border py-4 text-foreground font-black uppercase tracking-tighter focus:outline-none focus:border-foreground transition-all text-2xl"
+                         placeholder="+00 (0) 000 000"
+                       />
+                    </div>
+ 
+                    <div className="flex flex-col group">
+                       <label className="text-[9px] font-bold uppercase tracking-[0.4em] text-foreground/30 group-focus-within:text-foreground transition-colors mb-4 italic">04. Inquiry_Payload</label>
+                       <textarea 
+                         name="message"
+                         value={formData.message}
+                         onChange={handleChange}
+                         required
+                         rows={4}
+                         className="bg-transparent border-b border-border py-4 text-foreground font-black uppercase tracking-tighter focus:outline-none focus:border-foreground transition-all text-2xl resize-none"
+                         placeholder="DESCRIBE_REQUISITION..."
+                       />
+                    </div>
+ 
+                    <div className="pt-8">
+                       <button 
+                         type="submit"
+                         disabled={submitting}
+                         className="w-full md:w-auto px-24 py-8 bg-foreground text-background font-black uppercase tracking-[0.8em] text-[10px] hover:bg-muted-foreground transition-colors"
+                       >
+                         {submitting ? 'TRANSMITTING...' : 'LOG INQUIRY'}
+                       </button>
+                    </div>
+                 </form>
+              </FadeIn>
+            </div>
+ 
+            {/* Sidebar Locations */}
+            <div className="lg:col-span-4 lg:pl-12">
+               <div className="sticky top-48 space-y-24">
                   <div>
-                    <h3 className="font-semibold text-lg">Visit Us</h3>
-                    {/* Placeholder for real address */}
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                      123 Education Lane<br />Knowledge City, IN 400001
-                    </p>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/30 mb-12 block">Physical Hubs</span>
+                    <StaggerContainer className="space-y-8">
+                      {locations.map((loc) => (
+                        <StaggerItem key={loc.id}>
+                          <div className="p-8 border border-border bg-muted/20 group hover:bg-muted/40 transition-all duration-700">
+                             <div className="flex justify-between items-start mb-6">
+                                <span className="text-[9px] font-bold text-foreground/20 uppercase tracking-[0.3em] italic">{loc.id}</span>
+                                <span className="text-[9px] font-bold text-foreground/40 uppercase tracking-[0.2em]">{loc.type}</span>
+                             </div>
+                             <h3 className="text-xl font-black text-foreground uppercase tracking-tighter mb-4">{loc.name}</h3>
+                             <p className="text-xs font-medium text-muted-foreground lowercase leading-relaxed tracking-wide group-hover:text-foreground/60 transition-colors">
+                               {loc.address}
+                             </p>
+                             <div className="h-px w-0 bg-foreground group-hover:w-full transition-all duration-700 ease-in-out mt-8" />
+                          </div>
+                        </StaggerItem>
+                      ))}
+                    </StaggerContainer>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+ 
+                  <div className="pt-12 border-t border-border">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/30 mb-8 block">Rapid Channels</span>
+                    <div className="space-y-4">
+                       <a href="mailto:contact@ypgurukul.com" className="block text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors">
+                         [ contact@ypgurukul.com ]
+                       </a>
+                       <a href="tel:+911234567890" className="block text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors">
+                         [ +91 123 456 7890 ]
+                       </a>
+                    </div>
+                  </div>
+               </div>
+            </div>
+ 
+          </div>
+        </div>
+      </section>
 
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Call Us</h3>
-                    {/* Placeholder for real phone array */}
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                      +91 123 456 7890<br />Mon–Sat, 9AM to 7PM
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Email Us</h3>
-                    {/* Placeholder for real emails */}
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                      contact@ypgurukul.com<br />admissions@ypgurukul.com
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Google Maps Embed Placeholder - Note: client needs to replace with actual embed link */}
-            <Card className="overflow-hidden">
-               <div className="w-full h-48 bg-slate-200 dark:bg-slate-800">
+       {/* Map Embed Section */}
+      <section className="py-24 border-t border-border">
+         <div className="max-w-[1800px] mx-auto px-12">
+            <FadeIn>
+               <div className="aspect-[21/9] w-full bg-muted border border-border opacity-50 hover:opacity-100 transition-all duration-1000 overflow-hidden dark:grayscale dark:invert dark:opacity-30 dark:hover:opacity-50 dark:hover:invert-0 dark:hover:grayscale-0">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.8329615599024!2d72.88094977457787!3d19.07062228148902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c897f223fbad%3A0xe5db976d8dfced9d!2sBandra%20Kurla%20Complex!5e0!3m2!1sen!2sin!4v1709405400000!5m2!1sen!2sin" 
                     width="100%" 
@@ -122,56 +214,15 @@ export default function ContactPage() {
                     style={{ border: 0 }} 
                     allowFullScreen 
                     loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                </div>
-            </Card>
-          </SlideUp>
+               <p className="text-[8px] font-bold text-foreground/10 uppercase tracking-[0.5em] text-center mt-8">
+                 geospatial_node: 19.0706N, 72.8809E
+               </p>
+            </FadeIn>
+         </div>
+      </section>
 
-          <SlideUp delay={0.2} className="lg:col-span-2">
-            <Card className="h-full">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
-
-                {successMsg && (
-                  <div className="mb-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 text-sm rounded-md px-4 py-3">
-                    ✅ {successMsg}
-                  </div>
-                )}
-                {errorMsg && (
-                  <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 text-red-700 text-sm rounded-md px-4 py-3">
-                    {errorMsg}
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Input label="Your Name" placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} required />
-                    <Input label="Email Address" type="email" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                  </div>
-                  <Input label="Phone Number" type="tel" placeholder="+91 98765 43210" value={mobile} onChange={(e) => setMobile(e.target.value)} />
-
-                  <div className="w-full">
-                    <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
-                    <textarea
-                      className="flex min-h-[150px] w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-y dark:border-gray-700 dark:placeholder:text-gray-500"
-                      placeholder="How can we help you?"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full md:w-auto" isLoading={submitting}>
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </SlideUp>
-
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,1 +1,39 @@
-{}
+{
+  "[project]/src/components/global/GlobalCanvas.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/global/GlobalCanvas.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_three_build_three_core_996ef05a.js",
+      "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
+      "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
+      "static/chunks/node_modules_@react-three_fiber_dist_79ea1cf7._.js",
+      "static/chunks/node_modules_138063fa._.js",
+      "static/chunks/src_components_global_GlobalCanvas_tsx_5b93557e._.js",
+      "static/chunks/src_components_global_GlobalCanvas_tsx_c4150c6d._.js"
+    ]
+  },
+  "[project]/src/components/home/Hero3D.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/home/Hero3D.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_three_build_three_core_996ef05a.js",
+      "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
+      "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
+      "static/chunks/node_modules_@react-three_fiber_dist_d7dbaf6d._.js",
+      "static/chunks/node_modules_15e6b904._.js",
+      "static/chunks/src_components_home_Hero3D_tsx_4f5f67a0._.js",
+      "static/chunks/src_components_home_Hero3D_tsx_b7bab36f._.js"
+    ]
+  },
+  "[project]/src/components/home/LearningJourney3D.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/home/LearningJourney3D.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_three_build_three_core_996ef05a.js",
+      "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
+      "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
+      "static/chunks/node_modules_@react-three_fiber_dist_304f8263._.js",
+      "static/chunks/node_modules_gsap_c735b11d._.js",
+      "static/chunks/node_modules_38f1a8db._.js",
+      "static/chunks/src_components_home_LearningJourney3D_tsx_57099255._.js",
+      "static/chunks/src_components_home_LearningJourney3D_tsx_b7bab36f._.js"
+    ]
+  }
+}

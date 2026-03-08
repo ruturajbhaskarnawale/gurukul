@@ -1,1 +1,14 @@
-{}
+{
+  "[project]/src/components/global/GlobalCanvas.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/global/GlobalCanvas.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_three_build_three_core_996ef05a.js",
+      "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
+      "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
+      "static/chunks/node_modules_@react-three_fiber_dist_79ea1cf7._.js",
+      "static/chunks/node_modules_138063fa._.js",
+      "static/chunks/src_components_global_GlobalCanvas_tsx_5b93557e._.js",
+      "static/chunks/src_components_global_GlobalCanvas_tsx_c4150c6d._.js"
+    ]
+  }
+}

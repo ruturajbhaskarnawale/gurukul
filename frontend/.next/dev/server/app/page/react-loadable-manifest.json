@@ -17,10 +17,10 @@
       "static/chunks/node_modules_three_build_three_core_996ef05a.js",
       "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
       "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
-      "static/chunks/node_modules_@react-three_fiber_dist_d7dbaf6d._.js",
-      "static/chunks/node_modules_15e6b904._.js",
+      "static/chunks/node_modules_@react-three_fiber_dist_a0fcf049._.js",
+      "static/chunks/node_modules_2fd4f7d0._.js",
       "static/chunks/src_components_home_Hero3D_tsx_4f5f67a0._.js",
-      "static/chunks/src_components_home_Hero3D_tsx_b7bab36f._.js"
+      "static/chunks/src_components_home_Hero3D_tsx_7cb3847f._.js"
     ]
   },
   "[project]/src/components/home/LearningJourney3D.tsx [app-client] (ecmascript, next/dynamic entry)": {
@@ -33,7 +33,7 @@
       "static/chunks/node_modules_gsap_c735b11d._.js",
       "static/chunks/node_modules_38f1a8db._.js",
       "static/chunks/src_components_home_LearningJourney3D_tsx_57099255._.js",
-      "static/chunks/src_components_home_LearningJourney3D_tsx_b7bab36f._.js"
+      "static/chunks/src_components_home_LearningJourney3D_tsx_7cb3847f._.js"
     ]
   }
 }

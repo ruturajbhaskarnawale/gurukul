@@ -73,8 +73,26 @@ function CameraController() {
 }
 
 export function LearningJourney3D() {
+  const [isInView, setIsInView] = React.useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.01 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="learning-journey-container relative h-[400vh] bg-black">
+    <section ref={sectionRef} className="learning-journey-container relative h-[400vh] bg-black">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         
         {/* Text Overlay synced with scroll */}
@@ -87,20 +105,22 @@ export function LearningJourney3D() {
               travel through the multidimensional layers of academic excellence. unlocking every facet of your potential.
             </p>
         </div>
-
+ 
         {/* 3D Scene */}
         <div className="absolute inset-0 z-0">
-          <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 2]}>
-            <Environment preset="night">
-               <Lightformer intensity={10} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[20, 20, 1]} />
-            </Environment>
-            <ambientLight intensity={0.2} />
-            <directionalLight position={[10, 10, 5]} intensity={1} color="#ffffff" />
-            <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#ffffff" />
-            
-            <FloatingObjects />
-            <CameraController />
-          </Canvas>
+          {isInView && (
+            <Canvas camera={{ position: [0, 0, 5], fov: 60 }} dpr={[1, 2]}>
+              <Environment preset="night">
+                 <Lightformer intensity={10} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[20, 20, 1]} />
+              </Environment>
+              <ambientLight intensity={0.2} />
+              <directionalLight position={[10, 10, 5]} intensity={1} color="#ffffff" />
+              <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#ffffff" />
+              
+              <FloatingObjects />
+              <CameraController />
+            </Canvas>
+          )}
         </div>
       </div>
     </section>

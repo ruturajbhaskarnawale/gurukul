@@ -68,7 +68,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
         isOpen
     ]);
     const sidebarClasses = `
-    w-64 bg-[#08090C] border-r border-white/5 flex flex-col h-[100dvh]
+    w-64 bg-background border-r border-border flex flex-col h-[100dvh]
     fixed md:sticky top-0 z-50 transition-transform duration-300 ease-in-out
     ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
   `;
@@ -86,7 +86,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                 className: sidebarClasses,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "h-20 flex items-center justify-between px-8 border-b border-white/5",
+                        className: "h-20 flex items-center justify-between px-8 border-b border-border",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/",
@@ -112,7 +112,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                                         className: "flex flex-col leading-tight",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-xs font-black text-white tracking-[0.2em] uppercase",
+                                                className: "text-xs font-black text-foreground tracking-[0.2em] uppercase",
                                                 children: "Governance"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/admin/AdminSidebar.tsx",
@@ -140,7 +140,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: "md:hidden text-white/40 p-2",
+                                className: "md:hidden text-muted-foreground/60 p-2",
                                 onClick: onClose,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     className: "w-5 h-5",
@@ -182,7 +182,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                                 onClick: onClose,
                                 className: `
                   relative flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 group
-                  ${isActive ? 'bg-white/[0.05] text-white shadow-[0_0_15px_rgba(255,255,255,0.02)]' : 'text-[#888888] hover:bg-white/[0.02] hover:text-white'}
+                  ${isActive ? 'bg-muted/60 text-foreground shadow-md' : 'text-muted-foreground hover:bg-muted/30 hover:text-foreground'}
                 `,
                                 children: [
                                     isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -194,7 +194,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        className: `w-5 h-5 transition-transform duration-300 ${isActive ? 'scale-110 text-orange-400' : 'opacity-40 group-hover:scale-110 group-hover:opacity-100 group-hover:text-white'}`,
+                                        className: `w-5 h-5 transition-transform duration-300 ${isActive ? 'scale-110 text-orange-400' : 'opacity-40 group-hover:scale-110 group-hover:opacity-100 group-hover:text-foreground'}`,
                                         fill: "none",
                                         viewBox: "0 0 24 24",
                                         stroke: "currentColor",
@@ -234,15 +234,15 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-8 border-t border-white/5 space-y-6",
+                        className: "p-8 border-t border-border space-y-6",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                             href: "/",
-                            className: "flex items-center gap-4 px-2 hover:bg-white/[0.02] py-2 rounded-lg transition-all",
+                            className: "flex items-center gap-4 px-2 hover:bg-muted/30 py-2 rounded-lg transition-all",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-8 h-8 rounded-lg bg-white/[0.03] flex items-center justify-center",
+                                    className: "w-8 h-8 rounded-lg bg-muted/40 flex items-center justify-center border border-border",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        className: "w-4 h-4 text-white/40",
+                                        className: "w-4 h-4 text-muted-foreground/60",
                                         fill: "none",
                                         viewBox: "0 0 24 24",
                                         stroke: "currentColor",
@@ -267,7 +267,7 @@ const AdminSidebar = ({ isOpen = false, onClose })=>{
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-[9px] font-black text-white/60 uppercase tracking-widest",
+                                    className: "text-[9px] font-black text-muted-foreground uppercase tracking-widest",
                                     children: "Exit_Admin"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/admin/AdminSidebar.tsx",
@@ -324,7 +324,7 @@ const DashboardHeader = ({ title })=>{
     _s();
     const { user, logout } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$authContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-        className: "flex h-20 items-center justify-between px-8 bg-[#08090C]/50 backdrop-blur-xl border-b border-white/5 sticky top-0 z-30",
+        className: "flex h-20 items-center justify-between px-8 bg-background/50 backdrop-blur-xl border-b border-border sticky top-0 z-30",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex-1 max-w-2xl",
@@ -334,7 +334,7 @@ const DashboardHeader = ({ title })=>{
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute inset-y-0 left-4 flex items-center pointer-events-none",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                className: "w-4 h-4 text-white/20 group-focus-within:text-white/50 transition-colors",
+                                className: "w-4 h-4 text-foreground/20 group-focus-within:text-foreground/50 transition-colors",
                                 fill: "none",
                                 viewBox: "0 0 24 24",
                                 stroke: "currentColor",
@@ -361,7 +361,7 @@ const DashboardHeader = ({ title })=>{
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                             type: "text",
                             placeholder: "Search resources, records, results...",
-                            className: "w-full bg-white/[0.03] border border-white/5 rounded-xl py-2.5 pl-12 pr-4 text-[10px] uppercase font-bold tracking-[0.2em] text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 focus:bg-white/[0.05] transition-all"
+                            className: "w-full bg-muted/30 border border-border rounded-xl py-2.5 pl-12 pr-4 text-[10px] uppercase font-bold tracking-[0.2em] text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/20 focus:bg-muted/50 transition-all font-sans"
                         }, void 0, false, {
                             fileName: "[project]/src/components/dashboard/DashboardHeader.tsx",
                             lineNumber: 18,
@@ -385,7 +385,7 @@ const DashboardHeader = ({ title })=>{
                         className: "flex items-center gap-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: "p-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-white/40 hover:text-white hover:bg-white/[0.05] transition-all",
+                                className: "p-2.5 rounded-xl border border-border bg-muted/20 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     className: "w-5 h-5",
                                     fill: "none",
@@ -412,7 +412,7 @@ const DashboardHeader = ({ title })=>{
                                 columnNumber: 12
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: "p-2.5 rounded-xl border border-white/5 bg-white/[0.02] text-white/40 hover:text-white hover:bg-white/[0.05] transition-all",
+                                className: "p-2.5 rounded-xl border border-border bg-muted/20 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     className: "w-5 h-5",
                                     fill: "none",
@@ -457,13 +457,13 @@ const DashboardHeader = ({ title })=>{
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-center gap-4 pl-6 border-l border-white/10",
+                        className: "flex items-center gap-4 pl-6 border-l border-border",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex flex-col items-end",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-[10px] font-black uppercase tracking-widest text-white",
+                                        className: "text-[10px] font-black uppercase tracking-widest text-foreground",
                                         children: user?.name
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/dashboard/DashboardHeader.tsx",
@@ -471,7 +471,7 @@ const DashboardHeader = ({ title })=>{
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-[8px] font-bold text-[#888888] uppercase tracking-[0.2em]",
+                                        className: "text-[8px] font-bold text-muted-foreground uppercase tracking-[0.2em]",
                                         children: user?.role
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/dashboard/DashboardHeader.tsx",
@@ -487,7 +487,7 @@ const DashboardHeader = ({ title })=>{
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-teal-400 p-px",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-full h-full rounded-xl bg-[#08090C] flex items-center justify-center",
+                                    className: "w-full h-full rounded-xl bg-background flex items-center justify-center",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-xs font-black text-white",
                                         children: user?.name?.charAt(0)
@@ -560,7 +560,7 @@ function AdminLayout({ children }) {
     _s();
     const [sidebarOpen, setSidebarOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex h-screen bg-[#08090C] overflow-hidden font-sans selection:bg-orange-500/30",
+        className: "flex h-screen bg-background overflow-hidden font-sans selection:bg-orange-500/30",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$admin$2f$AdminSidebar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AdminSidebar"], {
                 isOpen: sidebarOpen,
@@ -574,13 +574,13 @@ function AdminLayout({ children }) {
                 className: "flex-1 flex flex-col overflow-hidden relative",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                        className: "md:hidden h-16 bg-[#0D0E12] border-b border-white/5 flex items-center justify-between px-6 z-40",
+                        className: "md:hidden h-16 bg-muted border-b border-border flex items-center justify-between px-6 z-40",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-sm font-black text-white uppercase tracking-tighter flex items-center gap-2",
+                                className: "text-sm font-black text-foreground uppercase tracking-tighter flex items-center gap-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "w-6 h-6 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex justify-center items-center text-[10px]",
+                                        className: "w-6 h-6 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex justify-center items-center text-[10px] text-white",
                                         children: "YP"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/admin/layout.tsx",
@@ -595,7 +595,7 @@ function AdminLayout({ children }) {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: "text-white/40 p-2 hover:text-white transition-colors",
+                                className: "text-muted-foreground p-2 hover:text-foreground transition-colors",
                                 onClick: ()=>setSidebarOpen(true),
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     className: "w-6 h-6",
@@ -636,7 +636,7 @@ function AdminLayout({ children }) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$studio$2d$freight$2f$react$2d$lenis$2f$dist$2f$react$2d$lenis$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ReactLenis"], {
-                        className: "flex-1 overflow-y-auto custom-scrollbar bg-[#08090C] relative z-0",
+                        className: "flex-1 overflow-y-auto custom-scrollbar bg-background relative z-0",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
                             className: "p-6 lg:p-12",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {

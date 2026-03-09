@@ -176,7 +176,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
             opacity: 1,
             y: 0
         },
-        className: cn("relative overflow-hidden rounded-2xl border border-white/5 bg-[#0D0E12] p-6 transition-all hover:border-white/10", className),
+        className: cn("relative overflow-hidden rounded-2xl border border-border bg-muted p-6 transition-all hover:border-foreground/10", className),
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: cn("absolute -top-12 -right-12 w-24 h-24 bg-gradient-to-br blur-3xl opacity-50", glowColors[variant])
@@ -191,7 +191,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[10px] font-bold uppercase tracking-[0.2em] text-[#888888] mb-1",
+                                className: "text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-1",
                                 children: title
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -199,7 +199,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "text-3xl font-black text-white tracking-tighter",
+                                className: "text-3xl font-black text-foreground tracking-tighter",
                                 children: value
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -207,7 +207,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             subtitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[10px] font-medium text-[#555555] mt-1",
+                                className: "text-[10px] font-medium text-muted-foreground/60 mt-1",
                                 children: subtitle
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -221,7 +221,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: cn("p-2.5 rounded-xl border border-white/5", iconColors[variant]),
+                        className: cn("p-2.5 rounded-xl border border-border", iconColors[variant]),
                         children: icon
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -235,7 +235,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             trend && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center gap-2 mt-4 pt-4 border-t border-white/5",
+                className: "flex items-center gap-2 mt-4 pt-4 border-t border-border",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: cn("text-[9px] font-bold uppercase tracking-widest", trend.isUp ? "text-teal-400" : "text-orange-400"),
@@ -250,7 +250,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "text-[9px] text-[#444444] uppercase tracking-widest",
+                        className: "text-[9px] text-muted-foreground/40 uppercase tracking-widest",
                         children: "vs last session"
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -273,7 +273,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className, variant
 _c = DashboardCard;
 const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })=>{
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: cn("rounded-2xl border border-white/5 bg-[#0D0E12] p-8", className),
+        className: cn("rounded-2xl border border-border bg-muted p-8", className),
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex justify-between items-start mb-12",
@@ -281,7 +281,7 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                className: "text-xl font-black text-white tracking-tight uppercase",
+                                className: "text-xl font-black text-foreground tracking-tight uppercase",
                                 children: title
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -289,7 +289,7 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             subtitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-xs text-[#888888] lowercase mt-1 tracking-wide",
+                                className: "text-xs text-muted-foreground lowercase mt-1 tracking-wide",
                                 children: subtitle
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -303,9 +303,9 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-2 border border-white/5 rounded-lg bg-white/[0.02]",
+                        className: "p-2 border border-border rounded-lg bg-muted/20",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                            className: "w-5 h-5 text-white/40",
+                            className: "w-5 h-5 text-foreground/40",
                             fill: "none",
                             viewBox: "0 0 24 24",
                             stroke: "currentColor",
@@ -378,7 +378,7 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-black text-[9px] font-black px-2 py-1 rounded",
+                                        className: "absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity bg-background text-foreground text-[9px] font-black px-2 py-1 rounded border border-border",
                                         children: [
                                             item.value,
                                             "%"
@@ -395,7 +395,7 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "mt-6 text-[9px] font-bold text-[#444444] uppercase tracking-widest group-hover:text-white transition-colors",
+                                className: "mt-6 text-[9px] font-bold text-muted-foreground/60 uppercase tracking-widest group-hover:text-foreground transition-colors",
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -414,7 +414,7 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mt-12 p-4 rounded-xl border border-white/5 bg-white/[0.01] flex items-center justify-center gap-4",
+                className: "mt-12 p-4 rounded-xl border border-border bg-muted/10 flex items-center justify-center gap-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] animate-pulse"
@@ -424,11 +424,11 @@ const DashboardChart = ({ title, subtitle, data, className, color = "#3B82F6" })
                         columnNumber: 10
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-[10px] font-bold uppercase tracking-[0.2em] text-[#888888]",
+                        className: "text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground",
                         children: [
                             "Optimal performance detected between ",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-white",
+                                className: "text-foreground",
                                 children: "9—11 AM"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/OrbitComponents.tsx",
@@ -560,7 +560,7 @@ function AdminDashboardPage() {
             className: "space-y-12 animate-pulse",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "h-12 w-64 bg-white/5 rounded-xl"
+                    className: "h-12 w-64 bg-muted/40 rounded-xl"
                 }, void 0, false, {
                     fileName: "[project]/src/app/admin/page.tsx",
                     lineNumber: 59,
@@ -574,7 +574,7 @@ function AdminDashboardPage() {
                         3,
                         4
                     ].map((i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "h-32 bg-white/5 rounded-2xl"
+                            className: "h-32 bg-muted/40 rounded-2xl"
                         }, i, false, {
                             fileName: "[project]/src/app/admin/page.tsx",
                             lineNumber: 61,
@@ -586,7 +586,7 @@ function AdminDashboardPage() {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "h-96 bg-white/5 rounded-2xl"
+                    className: "h-96 bg-muted/40 rounded-2xl"
                 }, void 0, false, {
                     fileName: "[project]/src/app/admin/page.tsx",
                     lineNumber: 63,
@@ -607,7 +607,7 @@ function AdminDashboardPage() {
                     className: "flex flex-col gap-2",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                            className: "text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none",
+                            className: "text-4xl md:text-5xl font-black text-foreground tracking-tighter uppercase leading-none",
                             children: "Governance"
                         }, void 0, false, {
                             fileName: "[project]/src/app/admin/page.tsx",
@@ -615,7 +615,7 @@ function AdminDashboardPage() {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-xs text-[#888888] tracking-widest uppercase font-bold",
+                            className: "text-xs text-muted-foreground tracking-widest uppercase font-bold",
                             children: "SYSTEM_STATUS: OPERATIONAL_LEVEL_01"
                         }, void 0, false, {
                             fileName: "[project]/src/app/admin/page.tsx",
@@ -822,13 +822,13 @@ function AdminDashboardPage() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FadeIn"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "rounded-2xl border border-white/5 bg-[#0D0E12] p-8",
+                            className: "rounded-2xl border border-border bg-muted p-8",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex justify-between items-center mb-8",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "text-xl font-black text-white tracking-tight uppercase",
+                                            className: "text-xl font-black text-foreground tracking-tight uppercase",
                                             children: "Quick Actions"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/admin/page.tsx",
@@ -853,10 +853,10 @@ function AdminDashboardPage() {
                                     className: "grid grid-cols-2 gap-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-left group",
+                                            className: "p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-[9px] font-bold text-[#555555] uppercase tracking-widest block mb-2",
+                                                    className: "text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2",
                                                     children: "01. DEPLOY"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -864,7 +864,7 @@ function AdminDashboardPage() {
                                                     columnNumber: 22
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs font-black text-white group-hover:text-orange-400 transition-colors",
+                                                    className: "text-xs font-black text-foreground group-hover:text-orange-400 transition-colors",
                                                     children: "NEW_COURSE"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -878,10 +878,10 @@ function AdminDashboardPage() {
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-left group",
+                                            className: "p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-[9px] font-bold text-[#555555] uppercase tracking-widest block mb-2",
+                                                    className: "text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2",
                                                     children: "02. APPEND"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -889,7 +889,7 @@ function AdminDashboardPage() {
                                                     columnNumber: 22
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs font-black text-white group-hover:text-orange-400 transition-colors",
+                                                    className: "text-xs font-black text-foreground group-hover:text-orange-400 transition-colors",
                                                     children: "STUDY_MATERIAL"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -903,10 +903,10 @@ function AdminDashboardPage() {
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-left group",
+                                            className: "p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-[9px] font-bold text-[#555555] uppercase tracking-widest block mb-2",
+                                                    className: "text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2",
                                                     children: "03. OVERSEE"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -914,7 +914,7 @@ function AdminDashboardPage() {
                                                     columnNumber: 22
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs font-black text-white group-hover:text-orange-400 transition-colors",
+                                                    className: "text-xs font-black text-foreground group-hover:text-orange-400 transition-colors",
                                                     children: "ALL_APPLICATIONS"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -928,10 +928,10 @@ function AdminDashboardPage() {
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all text-left group",
+                                            className: "p-6 rounded-xl border border-border bg-muted/20 hover:bg-muted/40 transition-all text-left group",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-[9px] font-bold text-[#555555] uppercase tracking-widest block mb-2",
+                                                    className: "text-[9px] font-bold text-muted-foreground/40 uppercase tracking-widest block mb-2",
                                                     children: "04. ANALYZE"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -939,7 +939,7 @@ function AdminDashboardPage() {
                                                     columnNumber: 22
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs font-black text-white group-hover:text-orange-400 transition-colors",
+                                                    className: "text-xs font-black text-foreground group-hover:text-orange-400 transition-colors",
                                                     children: "RESULT_MATRICS"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -971,10 +971,10 @@ function AdminDashboardPage() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$animations$2f$MotionUtils$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FadeIn"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "rounded-2xl border border-white/5 bg-gradient-to-br from-orange-500/10 to-transparent p-8 h-full",
+                            className: "rounded-2xl border border-border bg-gradient-to-br from-orange-500/10 to-transparent p-8 h-full",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-xl font-black text-white tracking-tight uppercase mb-8",
+                                    className: "text-xl font-black text-foreground tracking-tight uppercase mb-8",
                                     children: "System Health"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/admin/page.tsx",
@@ -985,7 +985,7 @@ function AdminDashboardPage() {
                                     className: "space-y-6",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/5",
+                                            className: "flex items-center justify-between p-4 rounded-xl bg-muted/20 border border-border",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-center gap-4",
@@ -998,7 +998,7 @@ function AdminDashboardPage() {
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-[10px] font-bold text-white uppercase tracking-widest",
+                                                            className: "text-[10px] font-bold text-foreground uppercase tracking-widest",
                                                             children: "Database_Sync"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/admin/page.tsx",
@@ -1026,7 +1026,7 @@ function AdminDashboardPage() {
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/5",
+                                            className: "flex items-center justify-between p-4 rounded-xl bg-muted/20 border border-border",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-center gap-4",
@@ -1039,7 +1039,7 @@ function AdminDashboardPage() {
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-[10px] font-bold text-white uppercase tracking-widest",
+                                                            className: "text-[10px] font-bold text-foreground uppercase tracking-widest",
                                                             children: "Auth_Protocol"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/admin/page.tsx",
@@ -1067,7 +1067,7 @@ function AdminDashboardPage() {
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center justify-between p-4 rounded-xl bg-white/[0.02] border border-white/5",
+                                            className: "flex items-center justify-between p-4 rounded-xl bg-muted/20 border border-border",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-center gap-4",
@@ -1080,7 +1080,7 @@ function AdminDashboardPage() {
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-[10px] font-bold text-white uppercase tracking-widest",
+                                                            className: "text-[10px] font-bold text-foreground uppercase tracking-widest",
                                                             children: "Resource_Load"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/admin/page.tsx",

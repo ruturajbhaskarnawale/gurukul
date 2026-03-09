@@ -446,6 +446,10 @@ p {
   top: -2rem;
 }
 
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
 .bottom-12 {
   bottom: 3rem;
 }
@@ -910,6 +914,10 @@ p {
   width: 2rem;
 }
 
+.w-\[1px\] {
+  width: 1px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1011,6 +1019,11 @@ p {
 
 .translate-x-0 {
   --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-full {
+  --tw-translate-y: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2771,6 +2784,11 @@ p {
 
 .group:hover .group-hover\:w-full {
   width: 100%;
+}
+
+.group:hover .group-hover\:translate-y-0 {
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .group:hover .group-hover\:scale-105 {

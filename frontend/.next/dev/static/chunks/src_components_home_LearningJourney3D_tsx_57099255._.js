@@ -16,7 +16,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$t
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/gsap/index.js [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/gsap/ScrollTrigger.js [app-client] (ecmascript)");
 ;
-var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
@@ -207,7 +207,28 @@ _s1(CameraController, "MI5rte2O7JQaEWFHXFJNNgum9DA=", false, function() {
 });
 _c1 = CameraController;
 function LearningJourney3D() {
+    _s2();
+    const [isInView, setIsInView] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState(false);
+    const sectionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useEffect({
+        "LearningJourney3D.useEffect": ()=>{
+            const observer = new IntersectionObserver({
+                "LearningJourney3D.useEffect": ([entry])=>{
+                    setIsInView(entry.isIntersecting);
+                }
+            }["LearningJourney3D.useEffect"], {
+                threshold: 0.01
+            });
+            if (sectionRef.current) {
+                observer.observe(sectionRef.current);
+            }
+            return ({
+                "LearningJourney3D.useEffect": ()=>observer.disconnect()
+            })["LearningJourney3D.useEffect"];
+        }
+    }["LearningJourney3D.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+        ref: sectionRef,
         className: "learning-journey-container relative h-[400vh] bg-black",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "sticky top-0 h-screen w-full overflow-hidden",
@@ -220,7 +241,7 @@ function LearningJourney3D() {
                             children: "the"
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                            lineNumber: 82,
+                            lineNumber: 100,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -229,7 +250,7 @@ function LearningJourney3D() {
                                 "Academic ",
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                     fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                    lineNumber: 84,
+                                    lineNumber: 102,
                                     columnNumber: 24
                                 }, this),
                                 " ",
@@ -238,13 +259,13 @@ function LearningJourney3D() {
                                     children: "Genesis"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                    lineNumber: 84,
+                                    lineNumber: 102,
                                     columnNumber: 31
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                            lineNumber: 83,
+                            lineNumber: 101,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -252,18 +273,18 @@ function LearningJourney3D() {
                             children: "travel through the multidimensional layers of academic excellence. unlocking every facet of your potential."
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                            lineNumber: 86,
+                            lineNumber: 104,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                    lineNumber: 81,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "absolute inset-0 z-0",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
+                    children: isInView && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
                         camera: {
                             position: [
                                 0,
@@ -294,20 +315,20 @@ function LearningJourney3D() {
                                     ]
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                    lineNumber: 95,
-                                    columnNumber: 16
+                                    lineNumber: 114,
+                                    columnNumber: 18
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                lineNumber: 94,
-                                columnNumber: 13
+                                lineNumber: 113,
+                                columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
                                 intensity: 0.2
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                lineNumber: 97,
-                                columnNumber: 13
+                                lineNumber: 116,
+                                columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
                                 position: [
@@ -319,8 +340,8 @@ function LearningJourney3D() {
                                 color: "#ffffff"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                lineNumber: 98,
-                                columnNumber: 13
+                                lineNumber: 117,
+                                columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
                                 position: [
@@ -332,42 +353,43 @@ function LearningJourney3D() {
                                 color: "#ffffff"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                lineNumber: 99,
-                                columnNumber: 13
+                                lineNumber: 118,
+                                columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FloatingObjects, {}, void 0, false, {
                                 fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                lineNumber: 101,
-                                columnNumber: 13
+                                lineNumber: 120,
+                                columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CameraController, {}, void 0, false, {
                                 fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                                lineNumber: 102,
-                                columnNumber: 13
+                                lineNumber: 121,
+                                columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                        lineNumber: 93,
-                        columnNumber: 11
+                        lineNumber: 112,
+                        columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-                    lineNumber: 92,
+                    lineNumber: 110,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-            lineNumber: 78,
+            lineNumber: 96,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/home/LearningJourney3D.tsx",
-        lineNumber: 77,
+        lineNumber: 95,
         columnNumber: 5
     }, this);
 }
+_s2(LearningJourney3D, "fzrOS/3nRgqv2AZVLpGGOKCCdYA=");
 _c2 = LearningJourney3D;
 var _c, _c1, _c2;
 __turbopack_context__.k.register(_c, "FloatingObjects");

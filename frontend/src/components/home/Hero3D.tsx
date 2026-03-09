@@ -2,18 +2,24 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, MeshTransmissionMaterial, Environment, ContactShadows } from "@react-three/drei";
-import { useRef, useMemo } from "react";
+import React, { useRef, useMemo } from "react";
 import * as THREE from "three";
+import { MotionValue } from "framer-motion";
 
-function NeuralCore() {
+interface Hero3DProps {
+  scrollProgress: MotionValue<number>;
+}
+
+function NeuralCore({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const { pointer } = useThree();
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      // Smooth rotation
-      meshRef.current.rotation.x += delta * 0.2;
-      meshRef.current.rotation.y += delta * 0.3;
+      const sp = scrollProgress.get();
+      // Base rotation + scroll influence
+      meshRef.current.rotation.x += delta * 0.4 + sp * 0.1;
+      meshRef.current.rotation.y += delta * 0.6 + sp * 0.15;
 
       // Mouse following parallax
       const targetX = pointer.x * 0.5;
@@ -21,41 +27,35 @@ function NeuralCore() {
       meshRef.current.position.x += (targetX - meshRef.current.position.x) * 0.1;
       meshRef.current.position.y += (targetY - meshRef.current.position.y) * 0.1;
 
+      // Vertical shift based on scroll
+      meshRef.current.position.y -= sp * 2.5;
+
       // Subtle pulse
       const time = state.clock.getElapsedTime();
-      const scale = 1 + Math.sin(time * 0.5) * 0.05;
+      const scale = 1.2 + Math.sin(time * 0.8) * 0.1;
       meshRef.current.scale.set(scale, scale, scale);
     }
   });
 
   return (
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+    <Float speed={3} rotationIntensity={1} floatIntensity={2}>
       <mesh ref={meshRef}>
-        <icosahedronGeometry args={[1, 15]} />
-        <MeshTransmissionMaterial
-          backside
-          samples={4}
-          resolution={128}
-          transmission={0.3}
-          roughness={0}
-          thickness={2}
-          ior={1.5}
-          chromaticAberration={0.1}
-          anisotropy={0.1}
-          distortion={0.5}
-          distortionScale={0.5}
-          temporalDistortion={0.5}
-          clearcoat={1}
-          attenuationDistance={1}
-          attenuationColor="#ffffff"
+        <icosahedronGeometry args={[1, 2]} />
+        <meshPhysicalMaterial
           color="#3b82f6"
+          metalness={0.9}
+          roughness={0.1}
+          reflectivity={1}
+          clearcoat={1}
+          transparent
+          opacity={0.8}
         />
       </mesh>
     </Float>
   );
 }
 
-function MagneticParticles({ count = 3000 }) {
+function MagneticParticles({ count = 800, scrollProgress }: { count?: number; scrollProgress: MotionValue<number> }) {
   const pointsRef = useRef<THREE.Points>(null);
   const { pointer, viewport } = useThree();
 
@@ -66,7 +66,7 @@ function MagneticParticles({ count = 3000 }) {
     const vel = new Float32Array(count * 3);
     
     for (let i = 0; i < count; i++) {
-      const r = 2.5 + Math.random() * 0.5;
+      const r = 2 + Math.random() * 2;
       const theta = Math.random() * 2 * Math.PI;
       const phi = Math.acos(2 * Math.random() - 1);
       
@@ -86,6 +86,7 @@ function MagneticParticles({ count = 3000 }) {
     
     const attr = pointsRef.current.geometry.attributes.position as THREE.BufferAttribute;
     const time = state.clock.getElapsedTime();
+    const sp = scrollProgress.get();
     
     // Project pointer to 3D space (approximate)
     const mx = (pointer.x * viewport.width) / 2;
@@ -102,31 +103,33 @@ function MagneticParticles({ count = 3000 }) {
       const origin = new THREE.Vector3(initialPositions[i3], initialPositions[i3 + 1], initialPositions[i3 + 2]);
       
       // 1. Return to origin force (Spring)
-      const distToOrigin = currentPos.distanceTo(origin);
       const springForce = origin.clone().sub(currentPos).multiplyScalar(0.02);
       
       // 2. Magnetic Repulsion
       const distToMouse = currentPos.distanceTo(mousePos);
       let repulsionForce = new THREE.Vector3(0, 0, 0);
-      if (distToMouse < 2) {
-        repulsionForce = currentPos.clone().sub(mousePos).normalize().multiplyScalar(0.2 * (1 - distToMouse / 2));
+      if (distToMouse < 1.5) {
+        repulsionForce = currentPos.clone().sub(mousePos).normalize().multiplyScalar(0.15 * (1 - distToMouse / 1.5));
       }
 
-      // 3. Subtle floating noise
+      // 3. Subtle floating noise + scroll vertical shift
       const noise = new THREE.Vector3(
-        Math.sin(time * 0.5 + i) * 0.002,
-        Math.cos(time * 0.4 + i) * 0.002,
-        Math.sin(time * 0.3 + i) * 0.002
+        Math.sin(time * 0.3 + i) * 0.003,
+        Math.cos(time * 0.2 + i) * 0.003,
+        Math.sin(time * 0.1 + i) * 0.003
       );
 
       // Update velocity and position
-      velocities[i3] = (velocities[i3] + springForce.x + repulsionForce.x + noise.x) * 0.9;
-      velocities[i3 + 1] = (velocities[i3 + 1] + springForce.y + repulsionForce.y + noise.y) * 0.9;
-      velocities[i3 + 2] = (velocities[i3 + 2] + springForce.z + repulsionForce.z + noise.z) * 0.9;
+      velocities[i3] = (velocities[i3] + springForce.x + repulsionForce.x + noise.x) * 0.95;
+      velocities[i3 + 1] = (velocities[i3 + 1] + springForce.y + repulsionForce.y + noise.y) * 0.95;
+      velocities[i3 + 2] = (velocities[i3 + 2] + springForce.z + repulsionForce.z + noise.z) * 0.95;
 
       attr.array[i3] += velocities[i3];
       attr.array[i3 + 1] += velocities[i3 + 1];
       attr.array[i3 + 2] += velocities[i3 + 2];
+
+      // Global scroll influence on particle field
+      attr.array[i3 + 1] -= sp * 0.08;
     }
     
     attr.needsUpdate = true;
@@ -144,10 +147,10 @@ function MagneticParticles({ count = 3000 }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.012}
+        size={0.03}
         color="#3b82f6"
         transparent
-        opacity={0.4}
+        opacity={0.6}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
       />
@@ -155,24 +158,57 @@ function MagneticParticles({ count = 3000 }) {
   );
 }
 
-export function Hero3D() {
+export function Hero3D({ scrollProgress }: Hero3DProps) {
+  const [isInView, setIsInView] = React.useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
-        <Environment preset="night" />
-        <ambientLight intensity={1.5} />
-        <pointLight position={[10, 10, 10]} intensity={2} />
-        <pointLight position={[-10, -10, -10]} intensity={1.5} />
-        <NeuralCore />
-        <MagneticParticles />
-        <ContactShadows 
-          position={[0, -2, 0]} 
-          opacity={0.8} 
-          scale={20} 
-          blur={2.5} 
-          far={5} 
-        />
-      </Canvas>
+    <div ref={containerRef} className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+      {isInView && (
+        <Canvas 
+          key="hero-canvas"
+          camera={{ position: [0, 0, 5], fov: 45 }} 
+          dpr={[1, 2]}
+          gl={{ 
+            antialias: true, 
+            alpha: true, 
+            powerPreference: "high-performance",
+            preserveDrawingBuffer: true
+          }}
+          onCreated={({ gl }) => {
+            console.log("Hero3D Canvas Created", gl.getContext());
+          }}
+        >
+          <Environment preset="night" />
+          <ambientLight intensity={1.5} />
+          <pointLight position={[10, 10, 10]} intensity={2} />
+          <pointLight position={[-10, -10, -10]} intensity={1.5} />
+          <NeuralCore scrollProgress={scrollProgress} />
+          <MagneticParticles scrollProgress={scrollProgress} />
+          <ContactShadows 
+            position={[0, -2, 0]} 
+            opacity={0.8} 
+            scale={20} 
+            blur={2.5} 
+            far={5} 
+          />
+        </Canvas>
+      )}
     </div>
   );
 }
